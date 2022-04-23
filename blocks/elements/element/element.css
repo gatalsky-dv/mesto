@@ -1,0 +1,8 @@
+.element {
+  margin: 0;
+  object-fit: cover;
+  border-radius: 10px;
+  background: #FFFFFF;
+  max-width: 282px;
+  min-height: 361px;
+}
