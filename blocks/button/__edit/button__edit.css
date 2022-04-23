@@ -1,0 +1,21 @@
+.button__edit {
+  margin: 0;
+  
+}
+
+@media screen and (min-width: 320px) {
+  .button__edit {
+    width: 18px;
+    height: 18px;
+    padding-left: 10px;
+    display: flex;
+    align-self: center;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .button__edit {
+    width: 24px;
+    height: 24px;
+  }
+}
