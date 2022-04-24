@@ -1,0 +1,31 @@
+.profile__name {
+  margin: 0;
+
+}
+
+@media screen and (min-width: 320px) {
+  .profile__name {
+    max-width: 189px;
+    min-height: 26px;
+    margin: 0 auto;
+    display: flex;
+    align-self: flex-start;
+    font-weight: 500;
+    font-size: 27px;
+    line-height: 33px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .profile__name {
+    max-width: 294px;
+    min-height: 39px;
+    margin: 0;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .profile__name {
+    max-width: 880px;
+  }
+}

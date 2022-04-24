@@ -3,13 +3,31 @@
 @import url(../blocks/page/page.css);
 
 /* header */
-
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
-@import url(../blocks/header/__line/header__line.css);
+
+/* content */
+@import url(../blocks/content/content.css);
 
 /* profile */
+@import url(../blocks/profile/profile.css);
+@import url(../blocks/profile/__description/profile__description.css);
+@import url(../blocks/profile/__edit/profile__edit.css);
+@import url(../blocks/profile/__info/profile__info.css);
+@import url(../blocks/profile/__name/profile__name.css);
+@import url(../blocks/button/__edit/button__edit.css);
+@import url(../blocks/button/__add/button__add.css);
 
 /* elements */
 
+@import url(../blocks/elements/elements.css);
+@import url(../blocks/elements/element/element.css);
+@import url(../blocks/elements/element/__maskgroup/element__maskgroup.css);
+@import url(../blocks/elements/element/__caption/element__caption.css);
+@import url(../blocks/elements/element/__name/element__name.css);
+@import url(../blocks/elements/element/__heart/element__heart.css);
+
 /* footer */
+
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__text/footer__text.css);
