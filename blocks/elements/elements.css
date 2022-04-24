@@ -13,3 +13,23 @@
     grid-template-columns: repeat(1, auto);
   }
 }
+
+@media screen and (min-width: 768px) {
+  .elements {
+    max-width: 581px;
+    min-height: 100%;
+    margin-top: 50px;
+    gap: 17px;
+    grid-template-rows: repeat(3, auto);
+    grid-template-columns: repeat(2, auto);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .elements {
+    max-width: 880px;
+    min-height: 100%;
+    grid-template-rows: repeat(2, auto);
+    grid-template-columns: repeat(3, auto);
+  }
+}
