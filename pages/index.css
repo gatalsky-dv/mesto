@@ -28,3 +28,6 @@
 @import url(../blocks/elements/element/__heart/element__heart.css);
 
 /* footer */
+
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__text/footer__text.css);
