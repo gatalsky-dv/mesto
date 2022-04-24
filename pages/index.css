@@ -19,7 +19,6 @@
 @import url(../blocks/button/__add/button__add.css);
 
 /* elements */
-
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/elements/element/element.css);
 @import url(../blocks/elements/element/__maskgroup/element__maskgroup.css);
@@ -28,6 +27,5 @@
 @import url(../blocks/elements/element/__heart/element__heart.css);
 
 /* footer */
-
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__text/footer__text.css);

@@ -19,7 +19,8 @@
   .profile__description {
     max-width: 336px;
     min-height: 18px;
-    margin-top: 16px;
+    padding-top: 10px;
+    align-self: flex-start;
   }
 }
 
