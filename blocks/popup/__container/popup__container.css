@@ -1,8 +1,7 @@
 .popup__container {
-  /* display: flex; */
   margin: 0;
   background-color: rgba(255, 255, 255, 1);
-  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, .15);
   border-radius: 10px;
 }
 
@@ -18,7 +17,7 @@
   .popup__container {
     width: 365px;
     height: 330px;
-    margin: 178px auto;
+    margin: 195px auto;
   }
 }
 

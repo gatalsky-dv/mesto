@@ -1,0 +1,38 @@
+.button__save {
+  margin: 0;
+  padding: 0;
+  border-radius: 2px;
+  background: #000000;
+  cursor: pointer;
+}
+
+.button__save:hover {
+  opacity: 0.8;
+}
+
+@media screen and (min-width: 320px) {
+  .button__save {
+    background-image: url(../../../images/SaveButton.png);
+    width: 238px;
+    height: 46px;
+    margin: 45px auto 25px auto;
+    display: flex;
+    align-self: center;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .button__save {
+    background-image: url(../../../images/SaveButton-1280.png);
+    background-size: cover;
+    width: 330px;
+    height: 50px;
+    margin: 48px auto 0 auto;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .button__save {
+    width: 358px;
+  }
+}
