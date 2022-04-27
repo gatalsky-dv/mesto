@@ -23,8 +23,8 @@ let formElement = document.querySelector('.popup__container'); // Восполь
 let nameInput = document.querySelector('.profile__name'); // Воспользуйтесь инструментом .querySelector()
 let jobInput = document.querySelector('.profile__description'); // Воспользуйтесь инструментом .querySelector()
 
-console.log(nameInput.innerText);
-console.log(jobInput.innerText);
+// console.log(document.querySelector('.profile__name'));
+ console.log(nameInput.outerText);
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
 function formSubmitHandler (evt) {
@@ -33,12 +33,11 @@ function formSubmitHandler (evt) {
                                                 // О том, как это делать, расскажем позже.
 
     // Получите значение полей jobInput и nameInput из свойства value
-    nameInput.innerText;
-    jobInput.innerText;
-    // Выберите элементы, куда должны быть вставлены значения полей
-    
-    // Вставьте новые значения с помощью textContent
 
+    // Выберите элементы, куда должны быть вставлены значения полей
+
+    // Вставьте новые значения с помощью textContent
+  
 }
 
 // Прикрепляем обработчик к форме:
@@ -49,5 +48,6 @@ buttonSaveBtn.addEventListener('click', function (event) {
   const currentPopup = event.target.closest('.popup');
   currentPopup.classList.toggle('popup_opened');
   document.body.style.overflowY = '';
+  formSubmitHandler;
 
 });
