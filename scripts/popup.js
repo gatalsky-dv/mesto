@@ -1,27 +1,30 @@
-const popupOpenBtn = document.querySelector(".button__edit");
-const popup = document.querySelector(".popup");
-const popupCloseBtn = document.querySelector(".button__close");
+const buttonOpenBtn = document.querySelector('.button__edit');
+const popup = document.querySelector('.popup');
+const buttonCloseBtn = document.querySelector('.button__close');
+const buttonSaveBtn = document.querySelector('.button__save')
 
-popupOpenBtn.addEventListener("click", function (event) {
+buttonOpenBtn.addEventListener('click', function (event) {
   event.preventDefault();
-  popup.classList.toggle("popup_opened");
-  document.body.style.overflowY = "hidden";
+  popup.classList.toggle('popup_opened');
+  document.body.style.overflowY = 'hidden';
 });
 
-popupCloseBtn.addEventListener("click", function (event) {
-  const currentPopup = event.target.closest(".popup");
-  currentPopup.classList.toggle("popup_opened");
-  document.body.style.overflowY = "";
+buttonCloseBtn.addEventListener('click', function (event) {
+  const currentPopup = event.target.closest('.popup');
+  currentPopup.classList.toggle('popup_opened');
+  document.body.style.overflowY = '';
 });
 
 // ----------------------------------------
 
 // Находим форму в DOM
-let formElement = document.querySelector(".popup__container"); // Воспользуйтесь методом querySelector()
+let formElement = document.querySelector('.popup__container'); // Воспользуйтесь методом querySelector()
 // Находим поля формы в DOM
-let nameInput = document.querySelector(".profile__name"); // Воспользуйтесь инструментом .querySelector()
-let jobInput = document.querySelector(".profile__description"); // Воспользуйтесь инструментом .querySelector()
+let nameInput = document.querySelector('.profile__name'); // Воспользуйтесь инструментом .querySelector()
+let jobInput = document.querySelector('.profile__description'); // Воспользуйтесь инструментом .querySelector()
 
+console.log(nameInput.innerText);
+console.log(jobInput.innerText);
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
 function formSubmitHandler (evt) {
@@ -30,12 +33,21 @@ function formSubmitHandler (evt) {
                                                 // О том, как это делать, расскажем позже.
 
     // Получите значение полей jobInput и nameInput из свойства value
-    nameInput = 
+    nameInput.innerText;
+    jobInput.innerText;
     // Выберите элементы, куда должны быть вставлены значения полей
-
+    
     // Вставьте новые значения с помощью textContent
+
 }
 
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
 formElement.addEventListener('submit', formSubmitHandler); 
+
+buttonSaveBtn.addEventListener('click', function (event) {
+  const currentPopup = event.target.closest('.popup');
+  currentPopup.classList.toggle('popup_opened');
+  document.body.style.overflowY = '';
+
+});
