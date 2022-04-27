@@ -17,10 +17,10 @@ popupCloseBtn.addEventListener("click", function (event) {
 // ----------------------------------------
 
 // Находим форму в DOM
-let formElement = // Воспользуйтесь методом querySelector()
+let formElement = document.querySelector(".popup__container"); // Воспользуйтесь методом querySelector()
 // Находим поля формы в DOM
-let nameInput = // Воспользуйтесь инструментом .querySelector()
-let jobInput = // Воспользуйтесь инструментом .querySelector()
+let nameInput = document.querySelector(".profile__name"); // Воспользуйтесь инструментом .querySelector()
+let jobInput = document.querySelector(".profile__description"); // Воспользуйтесь инструментом .querySelector()
 
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
@@ -30,7 +30,7 @@ function formSubmitHandler (evt) {
                                                 // О том, как это делать, расскажем позже.
 
     // Получите значение полей jobInput и nameInput из свойства value
-
+    nameInput = 
     // Выберите элементы, куда должны быть вставлены значения полей
 
     // Вставьте новые значения с помощью textContent
