@@ -18,13 +18,13 @@ buttonCloseBtn.addEventListener('click', function (event) {
 // ----------------------------------------
 
 // Находим форму в DOM
-let formElement = document.querySelector('.popup__container'); // Воспользуйтесь методом querySelector()
+let formElement = document.querySelector('.popup'); // Воспользуйтесь методом querySelector()
 // Находим поля формы в DOM
-let nameInput = document.querySelector('.profile__name'); // Воспользуйтесь инструментом .querySelector()
-let jobInput = document.querySelector('.profile__description'); // Воспользуйтесь инструментом .querySelector()
+let nameInput = document.querySelector('.popup__name'); // Воспользуйтесь инструментом .querySelector()
+let jobInput = document.querySelector('.popup__description'); // Воспользуйтесь инструментом .querySelector()
 
 // console.log(document.querySelector('.profile__name'));
- console.log(nameInput.outerText);
+ console.log(nameInput.value);
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
 function formSubmitHandler (evt) {
