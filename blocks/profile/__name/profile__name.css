@@ -17,7 +17,7 @@
 
 @media screen and (min-width: 768px) {
   .profile__name {
-    max-width: 294px;
+    max-width: 220px;
     min-height: 39px;
     margin: 0;
   }
@@ -25,6 +25,6 @@
 
 @media screen and (min-width: 1024px) {
   .profile__name {
-    max-width: 880px;
+    max-width: 294px;
   }
 }
