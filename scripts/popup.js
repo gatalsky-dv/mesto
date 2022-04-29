@@ -1,7 +1,7 @@
-const buttonOpenBtn = document.querySelector('.button__edit');
+const buttonOpenBtn = document.querySelector('.profile__edit');
 const popup = document.querySelector('.popup');
-const buttonCloseBtn = document.querySelector('.button__close');
-const buttonSaveBtn = document.querySelector('.button__save')
+const buttonCloseBtn = document.querySelector('.popup__close');
+const buttonSaveBtn = document.querySelector('.popup__save');
 
 buttonOpenBtn.addEventListener('click', function (event) {
   event.preventDefault();
