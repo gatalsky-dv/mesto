@@ -7,6 +7,8 @@
     max-width: 282px;
     min-height: 14px;
     margin: 48px auto 36px auto;
+    font-size: 14px;
+    line-height: 17px;
   }
 }
 
@@ -15,6 +17,8 @@
     max-width: 581px;
     min-height: 18px;
     margin: 57px auto 48px auto;
+    font-size: 18px;
+    line-height: 22px;
   }
 }
 

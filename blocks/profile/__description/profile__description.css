@@ -12,6 +12,9 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
 }
 
@@ -21,11 +24,5 @@
     min-height: 18px;
     padding-top: 10px;
     align-self: flex-start;
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  .profile__description {
-    max-width: 336px;
   }
 }

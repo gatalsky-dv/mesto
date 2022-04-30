@@ -4,6 +4,7 @@
   border: none;
   padding: 0;
   cursor: pointer;
+  /* object-fit: fill; */
 }
 
 .profile__add:hover {
@@ -12,7 +13,7 @@
 
 @media screen and (min-width: 320px) {
   .profile__add {
-    background-image: url(../../../images/Add-Button.png);
+    background-image: url(../../../images/Add-Button.svg);
     width: 282px;
     height: 50px;
     margin-top: 36px;
@@ -21,9 +22,7 @@
 
 @media screen and (min-width: 768px) {
   .profile__add {
-    background-image: url(../../../images/Add-Button_1280.png);
     width: 150px;
-    height: 50px;
     margin-top: 0;
   }
 }
