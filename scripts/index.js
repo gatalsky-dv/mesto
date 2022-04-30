@@ -1,18 +1,18 @@
 const buttonOpenBtn = document.querySelector('.profile__edit');
 const popup = document.querySelector('.popup');
 const buttonCloseBtn = document.querySelector('.popup__close');
-const buttonSaveBtn = document.querySelector('.popup__save');
+
 
 buttonOpenBtn.addEventListener('click', function (event) {
-  event.preventDefault();
+  
   popup.classList.toggle('popup_opened');
-  document.body.style.overflowY = 'hidden';
+  
 });
 
 buttonCloseBtn.addEventListener('click', function (event) {
-  let currentPopup = event.target.closest('.popup');
+  
   currentPopup.classList.toggle('popup_opened');
-  document.body.style.overflowY = '';
+  
 });
 
 // ----------------------------------------
@@ -47,9 +47,3 @@ function formSubmitHandler (evt) {
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
 formElement.addEventListener('submit', formSubmitHandler);
-
-buttonSaveBtn.addEventListener('click', function (event) {
-  let currentPopup = event.target.closest('.popup');
-  currentPopup.classList.toggle('popup_opened');
-  document.body.style.overflowY = '';
-});
