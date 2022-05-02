@@ -1,6 +1,6 @@
 .element__heart {
   margin: 0;
-  background-image: url(../../../../images/Heart-disabled.svg);
+  background-image: url(../../../images/Heart-disabled.svg);
   width: 22px;
   height: 19px;
   color: black;
@@ -13,9 +13,9 @@
 }
 
 .element__heart:hover {
-  background-image: url(../../../../images/Heart-hover.svg);
+  background-image: url(../../../images/Heart-hover.svg);
 }
 
 .element__heart:active {
-  background-image: url(../../../../images/Heart-active.svg);
+  background-image: url(../../../images/Heart-active.svg);
 }
