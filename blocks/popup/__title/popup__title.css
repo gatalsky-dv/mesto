@@ -9,7 +9,7 @@
     font-size: 18px;
     line-height: 22px;
     max-width: 238px;
-    margin: 0 auto;
+    margin: 25px auto 45px auto;
   }
 }
 
@@ -24,5 +24,6 @@
 @media screen and (min-width: 1024px) {
   .popup__title {
     max-width: 358px;
+    margin: 34px auto 24px auto;
   }
 }

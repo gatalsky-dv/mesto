@@ -1,6 +1,7 @@
 .header {
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   align-items: flex-start;
   border-bottom: 1px solid rgba(84, 84, 84, .7);
 }
@@ -16,13 +17,13 @@
 @media screen and (min-width: 768px) {
   .header {
     max-width: 581px;
-    margin-top: 47px;
   }
 }
 
 @media screen and (min-width: 1024px) {
   .header {
     max-width: 880px;
-    margin-top: 74px;
+    min-height: 74px;
+    margin-top: 45px;
   }
 }
