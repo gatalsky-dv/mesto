@@ -30,17 +30,3 @@
     right: -40px;
   }
 }
-
-@media screen and (min-width: 1024px) {
-  .popup__close {
-    /* top: calc(100vw/5.1);
-    left: calc((100vw - 370px)); */
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  .popup__close {
-    top: -40px;
-    right: -40px;
-  }
-}
