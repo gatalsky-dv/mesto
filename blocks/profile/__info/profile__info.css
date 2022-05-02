@@ -8,7 +8,7 @@
   .profile__info {
     max-width: 217px;
     min-height: 26px;
-    align-self: flex-start;
+    align-self: center;
   }
 }
 

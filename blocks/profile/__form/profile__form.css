@@ -8,6 +8,7 @@
   .profile__form {
     flex-direction: column;
     align-items: center;
+    align-self: center;
     max-width: 282px;
     min-height: 54px;
     margin: 26px auto 0 auto;
