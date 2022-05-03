@@ -5,8 +5,8 @@ const buttonCloseBtn = document.querySelector('.popup__close');
 // Находим форму в DOM
 let formElement = document.querySelector('.popup__edit'); // Воспользуйтесь методом querySelector()
 // Находим поля формы в DOM
-let nameInput = document.getElementsByName('fio')[0]; // Воспользуйтесь инструментом .querySelector()
-let jobInput = document.getElementsByName('who')[0]; // Воспользуйтесь инструментом .querySelector()
+let nameInput = document.querySelector('.popup__input_value_name');
+let jobInput = document.querySelector('.popup__input_value_job');
 
 let nameProfile = document.querySelector('.profile__name');
 let descrProfile = document.querySelector('.profile__description');
@@ -15,15 +15,11 @@ function popupActive() {
   popup.classList.toggle('popup_opened');
 }
 
-buttonOpenBtn.addEventListener('click', function (event) {
-  popupActive();
-  nameInput.value = nameProfile.textContent;
-  jobInput.value = descrProfile.textContent;
-});
+buttonOpenBtn.addEventListener('click', popupActive);
+nameInput.value = nameProfile.textContent;
+jobInput.value = descrProfile.textContent;
 
-buttonCloseBtn.addEventListener('click', function (event) {
-  popupActive();
-});
+buttonCloseBtn.addEventListener('click', popupActive);
 
 function formSubmitHandler (evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
