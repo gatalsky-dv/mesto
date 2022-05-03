@@ -17,8 +17,8 @@
     background-size: cover;
     width: 20px;
     height: 20px;
-    top: 0px;
-    right: 0px;
+    margin-top: -37px;
+    margin-left: 261px;
   }
 }
 
@@ -26,10 +26,13 @@
   .popup__close {
     width: 32px;
     height: 32px;
-    
-    top: 21%;
-    right: 33%;
-    bottom: 79%;
-    left: 67%;
+    margin-top: -40px;
+    margin-left: 370px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .popup__close {
+    margin-left: 436px;
   }
 }
