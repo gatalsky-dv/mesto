@@ -17,7 +17,7 @@
     background-size: cover;
     width: 20px;
     height: 20px;
-    top: -36px;
+    top: 0px;
     right: 0px;
   }
 }
@@ -26,7 +26,10 @@
   .popup__close {
     width: 32px;
     height: 32px;
-    top: -40px;
-    right: -40px;
+    
+    top: 21%;
+    right: 33%;
+    bottom: 79%;
+    left: 67%;
   }
 }
