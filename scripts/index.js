@@ -12,21 +12,25 @@ let nameProfile = document.querySelector('.profile__name');
 let descrProfile = document.querySelector('.profile__description');
 
 function popupActive() {
-  popup.classList.toggle('popup_opened');
+  nameInput.value = nameProfile.textContent;
+  jobInput.value = descrProfile.textContent;
+  popup.classList.add('popup_opened');
+}
+
+function popupClose() {
+  popup.classList.remove('popup_opened');
 }
 
 buttonOpenBtn.addEventListener('click', popupActive);
-nameInput.value = nameProfile.textContent;
-jobInput.value = descrProfile.textContent;
 
-buttonCloseBtn.addEventListener('click', popupActive);
+buttonCloseBtn.addEventListener('click', popupClose);
 
 function formSubmitHandler (evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
 
   nameProfile.textContent = nameInput.value;
   descrProfile.textContent = jobInput.value;
-  popupActive();
+  popupClose();
 }
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
