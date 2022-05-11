@@ -32,15 +32,15 @@
 
     <section class="elements">
 
-      <article class="element">
-        <img src="./images/Karachaevsk.jpg" alt="Карачаевск" class="element__maskgroup">
+      <!-- <article class="element">
+        <img src="" alt="" class="element__maskgroup">
         <div class="element__caption">
-          <h2 class="element__name">Карачаевск</h2>
-          <button type="button" class="element__heart"></button> 
+          <h2 class="element__name"></h2>
+          <button type="button" class="element__heart"></button>
         </div>
-      </article>
+      </article> -->
 
-      <article class="element">
+      <!-- <article class="element">
         <img src="./images/Mount-Elbrus.jpg" alt="Гора Эльбрус" class="element__maskgroup">
         <div class="element__caption">
           <h2 class="element__name">Гора Эльбрус</h2>
@@ -78,7 +78,7 @@
           <h2 class="element__name">Карачаево-Черкесия</h2>
           <button type="button" class="element__heart"></button>
         </div>
-      </article>
+      </article> -->
 
     </section>
 
@@ -100,7 +100,27 @@
       </form>
     </div>
     
+    <div class="popup__container popup__container_open">
+      <button aria-label="Закрыть" type="button" class="popup__close"></button>
+      <h3 class="popup__title">Новое место</h3>
+      <form name="kartochka" class="popup__edit">
+        <input name="title" type="text" value="Название" class="popup__input popup__input_value_title">
+        <input name="link" type="text" value="Ссылка на картинку" class="popup__input popup__input_value_link">
+        <button type="submit" class="popup__save">Создать</button>
+      </form>
+    </div>
+
   </div>
+
+  <template id="element-template">
+    <article class="element">
+      <img src="" alt="name" class="element__maskgroup">
+      <div class="element__caption">
+        <h2 class="element__name"></h2>
+        <button type="button" class="element__heart"></button> 
+      </div>
+    </article>
+  </template>
 
   <script src="./scripts/index.js"></script>
 
