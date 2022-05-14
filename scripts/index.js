@@ -64,12 +64,16 @@ const initialCards = [
     link: 'https://sun9-73.userapi.com/s/v1/if2/lAdOdDF06_YwNy1wLVobxFMeBJk-8au45BN97G4vnth3CLpVR8y4Bb7hF7wuaKb9u-2xEY1M-VH9GGeBtU2lrf9V.jpg?size=2560x1702&quality=96&type=album'
   }
 ]; 
-const elementContainer = document.querySelector('.elements');
 
 const elementTemplate = document.querySelector('#element-template').content;
-const elementCard = elementTemplate.querySelector('.element').cloneNode(true);
+const elementContainer = document.querySelector('.elements');
 
-elementCard.querySelector('.element__name').textContent = 'Урал Ультра Трейл';
-elementCard.querySelector('.element__maskgroup').src = 'https://sun9-73.userapi.com/s/v1/if2/lAdOdDF06_YwNy1wLVobxFMeBJk-8au45BN97G4vnth3CLpVR8y4Bb7hF7wuaKb9u-2xEY1M-VH9GGeBtU2lrf9V.jpg?size=2560x1702&quality=96&type=album';
 
-elementContainer.append(elementCard);
+initialCards.forEach((item) => {
+  const elementCard = elementTemplate.querySelector('.element').cloneNode(true);
+  elementCard.querySelector('.element__name').textContent = item.name;
+  const img = elementCard.querySelector('.element__maskgroup');
+  img.src = item.link;
+  img.alt = `Фото ${item.name}.`;
+  elementContainer.append(elementCard);
+});
