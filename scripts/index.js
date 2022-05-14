@@ -68,7 +68,6 @@ const initialCards = [
 const elementTemplate = document.querySelector('#element-template').content;
 const elementContainer = document.querySelector('.elements');
 
-
 initialCards.forEach((item) => {
   const elementCard = elementTemplate.querySelector('.element').cloneNode(true);
   elementCard.querySelector('.element__name').textContent = item.name;
@@ -77,3 +76,4 @@ initialCards.forEach((item) => {
   img.alt = `Фото ${item.name}.`;
   elementContainer.append(elementCard);
 });
+

@@ -28,6 +28,7 @@
 @import url(../blocks/element/__caption/element__caption.css);
 @import url(../blocks/element/__name/element__name.css);
 @import url(../blocks/element/__heart/element__heart.css);
+@import url(../blocks/element/__trash/element__trash.css);
 
 /* footer */
 @import url(../blocks/footer/footer.css);
