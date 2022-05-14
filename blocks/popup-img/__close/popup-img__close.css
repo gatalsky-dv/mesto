@@ -17,8 +17,8 @@
     background-size: cover;
     width: 20px;
     height: 20px;
-    margin-top: -37px;
-    margin-left: 261px;
+    margin-top: -36px;
+    margin-left: calc(75vw - 20px);
   }
 }
 
@@ -27,12 +27,14 @@
     width: 32px;
     height: 32px;
     margin-top: -40px;
-    margin-left: 370px;
+    margin-left: calc(75vw - 5%);
+    /* margin-left: 370px; */
   }
 }
 
 @media screen and (min-width: 1024px) {
   .popup-img__close {
-    margin-left: 436px;
+    margin-top: -40px;
+    margin-left: calc(75vw - 33vw);
   }
 }

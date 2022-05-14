@@ -68,6 +68,9 @@ const buttonOpenAdd = document.querySelector('.profile__add');
 const popupAdd = document.querySelector('.popup-add');
 const buttonCloseAdd = document.querySelector('.popup-add__close');
 
+const popupImg = document.querySelector('.popup-img');
+const buttonCloseImg = document.querySelector('.popup-img__close');
+
 const popupCard = document.querySelector('.popup-add__card');
 const elementTemplate = document.querySelector('#element-template').content;
 const elementContainer = document.querySelector('.elements');
@@ -80,8 +83,18 @@ function popupAddCardClose() {
   popupAdd.classList.remove('popup-add_opened');
 }
 
+function popupImgActive(item) {
+  popupImg.classList.add('popup-img_opened');
+  console.log(item.link);
+}
+
+function popupImgClose() {
+  popupImg.classList.remove('popup-img_opened');
+}
+
 buttonOpenAdd.addEventListener('click', popupAddCardActive);
 buttonCloseAdd.addEventListener('click', popupAddCardClose);
+buttonCloseImg.addEventListener('click', popupImgClose);
 
 initialCards.forEach((item) => {
   const elementCard = elementTemplate.querySelector('.element').cloneNode(true);
@@ -94,31 +107,31 @@ initialCards.forEach((item) => {
   elementContainer.append(elementCard);
 });
 
+const cardDelete = (evt) => {
+  evt.target.closest('.element').remove();
+}
+
+const heartClickClose = (evt) => {
+  evt.target.classList.remove('element__heart_active');
+}
+
+const heartClickActive = (evt) => {
+  evt.target.classList.add('element__heart_active');
+
+}
+
 elementContainer.addEventListener('click', (evt) => {
   const el = evt.target;
 
   if (el.classList.value === 'element__heart') {
-
-    el.classList.add('element__heart_active');
-
+    heartClickActive(evt);
   } else if (el.classList.value === 'element__heart element__heart_active') {
-
-      el.classList.remove('element__heart_active');
-
-    } else if (el.classList.value === 'element__maskgroup') {
-
-        
-        console.log('popup open!');
-
-      } else if (el.classList.value === 'element__trash') {
-
-          el.closest('.element').remove();
-
-        } else {
-
-            return;
-
-          }
+    heartClickClose(evt);
+    } else if (el.classList.value === 'element__trash') {
+        cardDelete(evt);
+      } else if (el.classList.value === 'element__maskgroup') {
+        popupImgActive(evt);
+      } else {
+          return;
+        }
 });
-
-
