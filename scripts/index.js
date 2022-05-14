@@ -1,13 +1,6 @@
 const buttonOpenBtn = document.querySelector('.profile__edit');
 const popup = document.querySelector('.popup');
 const buttonCloseBtn = document.querySelector('.popup__close');
-const popupEdit = document.querySelector('.popup__container');
-
-const elementTemplate = document.querySelector('#element-template').content;
-const elementContainer = document.querySelector('.elements');
-
-const buttonOpenAdd = document.querySelector('.profile__add');
-const popupCard = document.querySelector('.popup__card');
 
 // Находим форму в DOM
 let formElement = document.querySelector('.popup__edit'); // Воспользуйтесь методом querySelector()
@@ -22,25 +15,14 @@ function popupActive() {
   nameInput.value = nameProfile.textContent;
   jobInput.value = descrProfile.textContent;
   popup.classList.add('popup_opened');
-  popupEdit.classList.add('popup__container_open');
 }
 
 function popupClose() {
   popup.classList.remove('popup_opened');
-  popupEdit.classList.remove('popup__container_open');
-  popupCard.classList.remove('popup__card_open');
-  console.log('че тут?');
-}
-
-function popupAddCardActive() {
-  popup.classList.add('popup_opened');
-  popupCard.classList.add('popup__card_open');
-  console.log('открыл');
 }
 
 buttonOpenBtn.addEventListener('click', popupActive);
 buttonCloseBtn.addEventListener('click', popupClose);
-buttonOpenAdd.addEventListener('click', popupAddCardActive);
 
 function formSubmitHandler (evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
@@ -82,39 +64,61 @@ const initialCards = [
   }
 ]; 
 
+const buttonOpenAdd = document.querySelector('.profile__add');
+const popupAdd = document.querySelector('.popup-add');
+const buttonCloseAdd = document.querySelector('.popup-add__close');
+
+const popupCard = document.querySelector('.popup-add__card');
+const elementTemplate = document.querySelector('#element-template').content;
+const elementContainer = document.querySelector('.elements');
+
+function popupAddCardActive() {
+  popupAdd.classList.add('popup-add_opened');
+}
+
+function popupAddCardClose() {
+  popupAdd.classList.remove('popup-add_opened');
+}
+
+buttonOpenAdd.addEventListener('click', popupAddCardActive);
+buttonCloseAdd.addEventListener('click', popupAddCardClose);
+
 initialCards.forEach((item) => {
   const elementCard = elementTemplate.querySelector('.element').cloneNode(true);
   elementCard.querySelector('.element__name').textContent = item.name;
+
   const img = elementCard.querySelector('.element__maskgroup');
   img.src = item.link;
   img.alt = `Фото ${item.name}.`;
+
   elementContainer.append(elementCard);
 });
 
-// const heart = document.querySelector('.element__heart');
-
-// function heartActive() {
-//   heart.classList.add('element__heart_active');
-// }
-
-// function heartClose() {
-//   heart.classList.remove('element__heart_active');
-// }
-
 elementContainer.addEventListener('click', (evt) => {
   const el = evt.target;
+
   if (el.classList.value === 'element__heart') {
-    // heartActive();
+
     el.classList.add('element__heart_active');
+
   } else if (el.classList.value === 'element__heart element__heart_active') {
-      // heartClose();
+
       el.classList.remove('element__heart_active');
+
     } else if (el.classList.value === 'element__maskgroup') {
+
+        
         console.log('popup open!');
+
       } else if (el.classList.value === 'element__trash') {
-          const deleteButton = el.querySelector('.element__trash');
+
           el.closest('.element').remove();
+
         } else {
+
             return;
+
           }
 });
+
+
