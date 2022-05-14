@@ -1,0 +1,25 @@
+.popup__text {
+  margin: 0;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: white;
+}
+
+@media screen and (min-width: 320px) {
+  .profile {
+   
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .profile {
+    
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .profile {
+    
+  }
+}

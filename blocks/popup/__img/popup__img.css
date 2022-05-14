@@ -1,0 +1,23 @@
+.popup__img {
+  margin: 0;
+  display: none;
+}
+
+@media screen and (min-width: 320px) {
+  .profile {
+    max-width: 75vw;
+    max-height: calc(75vh + 22px);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .profile {
+
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .profile {
+
+  }
+}
