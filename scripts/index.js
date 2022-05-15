@@ -108,7 +108,6 @@ initialCards.forEach((item) => {
   elementContainer.append(elementCard);
 });
 
-
 let formCard = document.querySelector('.popup-add__edit'); 
 
 let titleInput = document.querySelector('.popup-add__input_value_title');
@@ -147,10 +146,13 @@ elementContainer.addEventListener('click', (evt) => {
 
   if (el.classList.value === 'element__heart') {
     heartClickActive(evt);
+
   } else if (el.classList.value === 'element__heart element__heart_active') {
     heartClickClose(evt);
+
     } else if (el.classList.value === 'element__trash') {
         cardDelete(evt);
+        
       } else if (el.classList.value === 'element__maskgroup') {
         const popupPic = document.querySelector('.popup-img__pic');
         popupPic.src = el.src;
