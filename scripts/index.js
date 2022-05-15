@@ -39,28 +39,28 @@ formElement.addEventListener('submit', formSubmitHandler);
 
 const initialCards = [
   {
-    name: 'Каменный Трейл',
-    link: 'https://sun9-5.userapi.com/s/v1/if2/Ay6TaygJbyMwxk85v8tPtLH0ivAnm1A6prbpB4VmxfVcA8Em02vCECM-3aTYPvKBSix79Rk-uZpEqYr-VG0N6AS3.jpg?size=2560x1700&quality=95&type=album'
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
   },
   {
-    name: 'Трейл Дикие Просторы',
-    link: 'https://sun3-16.userapi.com/s/v1/if2/BTSQzIjCQ69R4pCWO28iBrHAry2YenkbRnMNV1RCb0YzmJln-Rznf917I2GLXaCgVFO3PFKEe5M-JJ-3efNSv79v.jpg?size=2560x1709&quality=95&type=album'
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
   },
   {
-    name: 'Зимний трейл',
-    link: 'https://sun9-10.userapi.com/s/v1/if1/z5wOJnO2v_njY4O8aBoUbMFQ4KdH8ehLlCCEdm8r2Gq4Puzi5yQRla5KwdYQFmHmWwhMrTIJ.jpg?size=2560x1709&quality=96&type=album'
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
   },
   {
-    name: 'Трейл Северская Писаница',
-    link: 'https://sun9-58.userapi.com/s/v1/if1/TIyzMo6zJJyQsN6ojj4nhRZ06tCeHB7E9PVCGmxAnLgTohRtpui2gbBT5f3bxz7l5vS_Npwm.jpg?size=2560x1700&quality=96&type=album'
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
   },
   {
-    name: 'Скайраннинг Иремель',
-    link: 'https://sun9-81.userapi.com/s/v1/if2/sOGJo9ogBMpKDU1I_cwFs84rA_8UAMK0T2V8GL4MTXeIhWckJHNj7vYVdItiYSAM0tatCEsqUD1vyqR1HPSlvObk.jpg?size=2560x1707&quality=95&type=album'
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
   },
   {
-    name: 'Урал Ультра Трейл',
-    link: 'https://sun9-73.userapi.com/s/v1/if2/lAdOdDF06_YwNy1wLVobxFMeBJk-8au45BN97G4vnth3CLpVR8y4Bb7hF7wuaKb9u-2xEY1M-VH9GGeBtU2lrf9V.jpg?size=2560x1702&quality=96&type=album'
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ]; 
 
@@ -75,25 +75,12 @@ const popupCard = document.querySelector('.popup-add__card');
 const elementTemplate = document.querySelector('#element-template').content;
 const elementContainer = document.querySelector('.elements');
 
-const popupElement = document.querySelector('.popup-img__pic').src;
-
 function popupAddCardActive() {
   popupAdd.classList.add('popup-add_opened');
 }
 
 function popupAddCardClose() {
   popupAdd.classList.remove('popup-add_opened');
-}
-
-function popupImgActive(item) {
-  popupImg.classList.add('popup-img_opened');
-  console.log(initialCards[5]);
-  console.log(initialCards[5].link);
-  const popupPic = document.querySelector('.popup-img__pic');
-  popupPic.src = popupElement;
-  popupPic.alt = `Фото ${initialCards[5].name}.`;
-  const popupName = document.querySelector('.popup-img__text');
-  popupName.textContent = initialCards[5].name;
 }
 
 function popupImgClose() {
@@ -110,7 +97,7 @@ initialCards.forEach((item) => {
 
   const img = elementCard.querySelector('.element__maskgroup');
   img.src = item.link;
-  img.alt = `Фото ${item.name}.`;
+  img.alt = `Фото ${item.name}`;
 
   elementContainer.append(elementCard);
 });
@@ -138,10 +125,25 @@ elementContainer.addEventListener('click', (evt) => {
     } else if (el.classList.value === 'element__trash') {
         cardDelete(evt);
       } else if (el.classList.value === 'element__maskgroup') {
+        const popupPic = document.querySelector('.popup-img__pic');
+        popupPic.src = el.src;
+        popupPic.alt = el.alt;
+        const popupPicName = document.querySelector('.popup-img__text');
+        popupPicName.textContent = el.alt.substr(4);
         popupImgActive(evt);
-        popupElement = document.querySelector('.popup-img__pic').src;
-        console.log(popupElement);
       } else {
           return;
         }
 });
+
+function popupImgActive(item) {
+  popupImg.classList.add('popup-img_opened');
+}
+
+function formSubmitCard (evt) {
+  evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
+
+  nameProfile.textContent = nameInput.value;
+  descrProfile.textContent = jobInput.value;
+  popupAddCardClose();
+}
