@@ -87,6 +87,10 @@ function popupImgClose() {
   popupImg.classList.remove('popup-img_opened');
 }
 
+function popupImgActive(item) {
+  popupImg.classList.add('popup-img_opened');
+}
+
 buttonOpenAdd.addEventListener('click', popupAddCardActive);
 buttonCloseAdd.addEventListener('click', popupAddCardClose);
 buttonCloseImg.addEventListener('click', popupImgClose);
@@ -136,14 +140,27 @@ elementContainer.addEventListener('click', (evt) => {
         }
 });
 
-function popupImgActive(item) {
-  popupImg.classList.add('popup-img_opened');
-}
+// Находим форму в DOM
+let cardElement = document.querySelector('.popup-add__edit'); // Воспользуйтесь методом querySelector()
+// Находим поля формы в DOM
+let titleInput = document.querySelector('.popup-add__input_value_title');
+let linkInput = document.querySelector('.popup-add__input_value_link');
+
+let elementName = document.querySelector('.element__name');
+let elementImg = document.querySelector('.element__maskgroup');
 
 function formSubmitCard (evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
 
-  nameProfile.textContent = nameInput.value;
-  descrProfile.textContent = jobInput.value;
+  elementName.textContent = titleInput.value;
+  elementImg.src = linkInput.value;
+  elementImg.alt = titleInput.value;
+
+  console.log(elementName.textContent);
+  console.log(elementImg.src);
+  console.log(elementImg.alt);
+
   popupAddCardClose();
 }
+
+formElement.addEventListener('submit', formSubmitCard);
