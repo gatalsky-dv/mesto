@@ -81,6 +81,8 @@ function popupAddCardActive() {
 
 function popupAddCardClose() {
   popupAdd.classList.remove('popup-add_opened');
+  titleInput.value = "";
+  linkInput.value = "";
 }
 
 function popupImgClose() {
@@ -96,15 +98,37 @@ buttonCloseAdd.addEventListener('click', popupAddCardClose);
 buttonCloseImg.addEventListener('click', popupImgClose);
 
 initialCards.forEach((item) => {
-  const elementCard = elementTemplate.querySelector('.element').cloneNode(true);
+  let elementCard = elementTemplate.querySelector('.element').cloneNode(true);
   elementCard.querySelector('.element__name').textContent = item.name;
 
-  const img = elementCard.querySelector('.element__maskgroup');
+  let img = elementCard.querySelector('.element__maskgroup');
   img.src = item.link;
   img.alt = `Фото ${item.name}`;
 
   elementContainer.append(elementCard);
 });
+
+
+let formCard = document.querySelector('.popup-add__edit'); 
+
+let titleInput = document.querySelector('.popup-add__input_value_title');
+let linkInput = document.querySelector('.popup-add__input_value_link');
+
+function cardSubmitHandler (evt) {
+  evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
+
+  elementCard = elementTemplate.querySelector('.element').cloneNode(true);
+  elementCard.querySelector('.element__name').textContent = titleInput.value;
+
+  let pic = elementCard.querySelector('.element__maskgroup');
+  pic.src = linkInput.value;
+  pic.alt = `Фото ${titleInput.value}`;
+
+  elementContainer.prepend(elementCard);
+  popupAddCardClose();
+}
+
+formCard.addEventListener('submit', cardSubmitHandler);
 
 const cardDelete = (evt) => {
   evt.target.closest('.element').remove();
@@ -116,7 +140,6 @@ const heartClickClose = (evt) => {
 
 const heartClickActive = (evt) => {
   evt.target.classList.add('element__heart_active');
-
 }
 
 elementContainer.addEventListener('click', (evt) => {
@@ -132,35 +155,12 @@ elementContainer.addEventListener('click', (evt) => {
         const popupPic = document.querySelector('.popup-img__pic');
         popupPic.src = el.src;
         popupPic.alt = el.alt;
+
         const popupPicName = document.querySelector('.popup-img__text');
         popupPicName.textContent = el.alt.substr(4);
+
         popupImgActive(evt);
       } else {
           return;
         }
 });
-
-// Находим форму в DOM
-let cardElement = document.querySelector('.popup-add__edit'); // Воспользуйтесь методом querySelector()
-// Находим поля формы в DOM
-let titleInput = document.querySelector('.popup-add__input_value_title');
-let linkInput = document.querySelector('.popup-add__input_value_link');
-
-let elementName = document.querySelector('.element__name');
-let elementImg = document.querySelector('.element__maskgroup');
-
-function formSubmitCard (evt) {
-  evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-
-  elementName.textContent = titleInput.value;
-  elementImg.src = linkInput.value;
-  elementImg.alt = titleInput.value;
-
-  console.log(elementName.textContent);
-  console.log(elementImg.src);
-  console.log(elementImg.alt);
-
-  popupAddCardClose();
-}
-
-formElement.addEventListener('submit', formSubmitCard);
