@@ -75,6 +75,8 @@ const popupCard = document.querySelector('.popup-add__card');
 const elementTemplate = document.querySelector('#element-template').content;
 const elementContainer = document.querySelector('.elements');
 
+const popupElement = document.querySelector('.popup-img__pic').src;
+
 function popupAddCardActive() {
   popupAdd.classList.add('popup-add_opened');
 }
@@ -85,7 +87,13 @@ function popupAddCardClose() {
 
 function popupImgActive(item) {
   popupImg.classList.add('popup-img_opened');
-  console.log(item.link);
+  console.log(initialCards[5]);
+  console.log(initialCards[5].link);
+  const popupPic = document.querySelector('.popup-img__pic');
+  popupPic.src = popupElement;
+  popupPic.alt = `Фото ${initialCards[5].name}.`;
+  const popupName = document.querySelector('.popup-img__text');
+  popupName.textContent = initialCards[5].name;
 }
 
 function popupImgClose() {
@@ -131,6 +139,8 @@ elementContainer.addEventListener('click', (evt) => {
         cardDelete(evt);
       } else if (el.classList.value === 'element__maskgroup') {
         popupImgActive(evt);
+        popupElement = document.querySelector('.popup-img__pic').src;
+        console.log(popupElement);
       } else {
           return;
         }
