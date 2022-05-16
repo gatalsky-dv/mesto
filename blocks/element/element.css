@@ -6,3 +6,7 @@
   width: 282px;
   min-height: 361px;
 }
+
+.element:hover {
+  cursor: pointer;
+}
