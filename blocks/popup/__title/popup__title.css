@@ -1,4 +1,5 @@
 .popup__title {
+  display: none;
   margin: 0;
   font-weight: 900;
   color: black;
