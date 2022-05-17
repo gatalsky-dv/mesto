@@ -3,21 +3,3 @@
   max-width: 75vw;
   max-height: 75vh;
 }
-
-@media screen and (min-width: 320px) {
-  .popup__pic {
-   
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .popup__pic {
-    
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  .popup__pic {
-   
-  }
-}

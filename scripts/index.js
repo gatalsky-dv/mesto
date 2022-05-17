@@ -143,7 +143,7 @@ elementContainer.addEventListener('click', (evt) => {
   } 
 
   if (el.classList.value === 'element__trash') {
-        cardDelete(el);
+    cardDelete(el);
   }
        
   if (el.classList.value === 'element__maskgroup') {

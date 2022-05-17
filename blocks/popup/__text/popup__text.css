@@ -9,22 +9,20 @@
 }
 
 @media screen and (min-width: 320px) {
-  .popup-img__text {
-    flex-direction: column;
-    align-items: center;
+  .popup__text {
     max-width: 240px;
     margin-top: 10px;
   }
 }
 
 @media screen and (min-width: 768px) {
-  .popup-img__text {
+  .popup__text {
     max-width: 270px;
   }
 }
 
 @media screen and (min-width: 1024px) {
-  .popup-img__text {
+  .popup__text {
     max-width: 291px;
   }
 }
