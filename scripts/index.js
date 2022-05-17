@@ -75,7 +75,6 @@ function closeAddCardPopup() {
   popupInputValueLink.classList.remove('popup__input_opened');
   popupInputValueTitle.value = '';
   popupInputValueLink.value = '';
-  console.log(popupInputValueLink.value);
   closePopup();
 }
 
@@ -93,7 +92,7 @@ function formSubmitEditProfilePopup (evt) {
 }
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
-popupEdit.addEventListener('submit', formSubmitEditProfilePopup);
+// popupEdit.addEventListener('submit', formSubmitEditProfilePopup);
 
 //------------------ Практическая работа №5 --------------------
 
@@ -106,8 +105,6 @@ const elementName = elementCard.querySelector('.element__name');
 
 const renderCard = (item) => {
   elementCard.cloneNode(true);
-  console.log(elementCard);
-  elementContainer.append(elementCard);
 }
 
 const createCard = ({name, link}) => {
@@ -119,31 +116,15 @@ const createCard = ({name, link}) => {
 initialCards.forEach((item) => {
   renderCard(item);
   createCard(item);
-
-  elementContainer.append(elementCard);
-  console.log(elementCard);
-
-  console.log(elementName.textContent);
-  console.log(elementMaskgroup.src);
-  console.log(elementMaskgroup.alt);
-  // console.log(elementContainer);
+  elementContainer.append(elementCard.cloneNode(true));
 });
 
 
 
 function cardSubmitHandler (evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-
-  // elementCard = elementTemplate.querySelector('.element').cloneNode(true);
-  elementName.textContent = popupInputValueTitle.value;
-
-  console.log(popupInputValueTitle.value);
-
-  // let elementMaskgroup = elementCard.querySelector('.element__maskgroup');
-  elementMaskgroup.src = popupInputValueLink.value;
-  elementMaskgroup.alt = `Фото ${popupInputValueTitle.value}`;
-
-  elementContainer.prepend(elementCard);
+  createCard({name: popupInputValueTitle.value, link: popupInputValueLink.value});
+  elementContainer.prepend(elementCard.cloneNode(true));
   closeAddCardPopup();
 }
 
