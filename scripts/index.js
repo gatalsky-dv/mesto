@@ -133,37 +133,37 @@ function cardSubmitHandler (evt) {
 
 // formCard.addEventListener('submit', cardSubmitHandler);
 
-const cardDelete = (evt) => {
-  evt.target.closest('.element').remove();
+const cardDelete = (el) => {
+  el.closest('.element').remove();
 }
 
-const heartClickClose = (evt) => {
-  evt.target.classList.remove('element__heart_active');
-}
+// const heartClickClose = (evt) => {
+//   evt.target.classList.remove('element__heart_active');
+// }
 
-const heartClickActive = (evt) => {
-  evt.target.classList.toggle('element__heart_active');
+const likeClick = (el) => {
+  el.classList.toggle('element__heart_active');
 }
 
 elementContainer.addEventListener('click', (evt) => {
   const el = evt.target;
 
-  if (el.classList.value === 'element__heart') {
-    evt.target.classList.toggle('element__heart_active');
+  if (el.classList.value === 'element__heart' || el.classList.value === 'element__heart element__heart_active') {
+    likeClick(el);
+  } 
 
-  } else if (el.classList.value === 'element__trash') {
-        cardDelete(evt);
-        
-      } else if (el.classList.value === 'element__maskgroup') {
-        const popupPic = document.querySelector('.popup-img__pic');
-        // popupPic.src = el.src;
-        // popupPic.alt = el.alt;
+  if (el.classList.value === 'element__trash') {
+        cardDelete(el);
+  }
+       
+  if (el.classList.value === 'element__maskgroup') {
+    const popupPic = document.querySelector('.popup-img__pic');
+    // popupPic.src = el.src;
+    // popupPic.alt = el.alt;
 
-        const popupPicName = document.querySelector('.popup-img__text');
-        // popupPicName.textContent = el.alt.substr(5);
+    const popupPicName = document.querySelector('.popup-img__text');
+    // popupPicName.textContent = el.alt.substr(5);
 
-        // popupImgActive(evt);
-      } else {
-          return;
-        }
+    // popupImgActive(evt);
+  } 
 });
