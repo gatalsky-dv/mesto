@@ -6,19 +6,20 @@ const popup = document.querySelector('.popup');
 const popupTitle = document.querySelector('.popup__title');
 const popupSave = document.querySelector('.popup__save');
 const popupContainer = document.querySelector('.popup__container');
+const popupImg = document.querySelector('.popup__img');
+const popupText = document.querySelector('.popup__text');
 
 
 // Находим форму в DOM
 const popupEdit = document.querySelector('.popup__edit'); // Воспользуйтесь методом querySelector()
 // Находим поля формы в DOM
-let popupInputValueName = document.querySelector('.popup__input_value_name');
-let popupInputValueJob = document.querySelector('.popup__input_value_job');
-let popupInputValueTitle = document.querySelector('.popup__input_value_title');
-let popupInputValueLink = document.querySelector('.popup__input_value_link');
+const popupInputValueName = document.querySelector('.popup__input_value_name');
+const popupInputValueJob = document.querySelector('.popup__input_value_job');
+const popupInputValueTitle = document.querySelector('.popup__input_value_title');
+const popupInputValueLink = document.querySelector('.popup__input_value_link');
 
-
-let profileName = document.querySelector('.profile__name');
-let profileDescription = document.querySelector('.profile__description');
+const profileName = document.querySelector('.profile__name');
+const profileDescription = document.querySelector('.profile__description');
 
 function openPopup() {
   popup.classList.add('popup_opened');
@@ -51,6 +52,7 @@ function closePopup() {
   popupSave.classList.remove('popup__save_opened');
   popupTitle.textContent = '';
   popupSave.textContent = '';
+  
 }
 
 function closeEditProfilePopup() {
@@ -64,15 +66,16 @@ function closeEditProfilePopup() {
   popupImg.classList.remove('popup__img_opened');
   popupContainer.classList.remove('popup__container_opened');
   popupText.classList.remove('popup__text_opened');
-  // titleInput.value.reset();
-  // linkInput.value.reset();
+  popupInputValueTitle.value = '';
+  popupInputValueLink.value = '';
 }
 
 function closeAddCardPopup() {
   popupInputValueTitle.classList.remove('popup__input_opened');
   popupInputValueLink.classList.remove('popup__input_opened');
-  titleInput.value.reset();
-  linkInput.value.reset();
+  popupInputValueTitle.value = '';
+  popupInputValueLink.value = '';
+  console.log(popupInputValueLink.value);
   closePopup();
 }
 
@@ -95,59 +98,64 @@ popupEdit.addEventListener('submit', formSubmitEditProfilePopup);
 //------------------ Практическая работа №5 --------------------
 
 
-const popupAdd = document.querySelector('.popup-add');
-const buttonCloseAdd = document.querySelector('.popup-add__close');
+const elementTemplate = document.querySelector('#element-template').content;
+const elementContainer = document.querySelector('.elements');
+const elementCard = elementTemplate.querySelector('.element');
+const elementMaskgroup = elementCard.querySelector('.element__maskgroup');
+const elementName = elementCard.querySelector('.element__name');
 
-// const popupImg = document.querySelector('.popup-img');
-// const buttonCloseImg = document.querySelector('.popup-img__close');
+const renderCard = (item) => {
+  elementCard.cloneNode(true);
+  console.log(elementCard);
+  elementContainer.append(elementCard);
+}
 
-//const elementTemplate = document.querySelector('#element-template').content;
-const elementTemplate = document.querySelector('.element');
-let elementContainer = document.querySelector('.elements');
-
+const createCard = ({name, link}) => {
+  elementName.textContent = name;
+  elementMaskgroup.src = link;
+  elementMaskgroup.alt = `Фото ${name}`;
+}
 
 initialCards.forEach((item) => {
-  let elementCard = document.querySelector('#element-template').content.querySelector('.element').cloneNode(true);
-  //let elementCard = elementTemplate.querySelector('.element').cloneNode(true);
-  elementCard.querySelector('.element__name').textContent = item.name;
-
-  let img = elementCard.querySelector('.element__maskgroup');
-  img.src = item.link;
-  img.alt = `Фото ${item.name}`;
+  renderCard(item);
+  createCard(item);
 
   elementContainer.append(elementCard);
+  console.log(elementCard);
+
+  console.log(elementName.textContent);
+  console.log(elementMaskgroup.src);
+  console.log(elementMaskgroup.alt);
+  // console.log(elementContainer);
 });
+
+
 
 function cardSubmitHandler (evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
 
-  elementCard = elementTemplate.querySelector('.element').cloneNode(true);
-  elementCard.querySelector('.element__name').textContent = titleInput.value;
+  // elementCard = elementTemplate.querySelector('.element').cloneNode(true);
+  elementName.textContent = popupInputValueTitle.value;
 
-  let elementMaskgroup = elementCard.querySelector('.element__maskgroup');
-  elementMaskgroup.src = linkInput.value;
-  elementMaskgroup.alt = `Фото ${titleInput.value}`;
+  console.log(popupInputValueTitle.value);
+
+  // let elementMaskgroup = elementCard.querySelector('.element__maskgroup');
+  elementMaskgroup.src = popupInputValueLink.value;
+  elementMaskgroup.alt = `Фото ${popupInputValueTitle.value}`;
 
   elementContainer.prepend(elementCard);
   closeAddCardPopup();
 }
 
-// formCard.addEventListener('submit', cardSubmitHandler);
+popupEdit.addEventListener('submit', cardSubmitHandler);
 
 const cardDelete = (el) => {
   el.closest('.element').remove();
 }
 
-// const heartClickClose = (evt) => {
-//   evt.target.classList.remove('element__heart_active');
-// }
-
 const likeClick = (el) => {
   el.classList.toggle('element__heart_active');
 }
-
-const popupImg = document.querySelector('.popup__img');
-const popupText = document.querySelector('.popup__text');
 
 const popupImgActive = (el) => {
   popup.classList.add('popup_opened_img');
@@ -168,15 +176,9 @@ elementContainer.addEventListener('click', (evt) => {
   }
        
   if (el.classList.value === 'element__maskgroup') {
-
-    
     popupImg.src = el.src;
     popupImg.alt = el.alt;
     popupText.textContent = el.alt.substr(5);
-    console.log(el.alt.substr(5));
-    // popupText.textContent = el.alt.substr(5);
-    // const popupPicName = document.querySelector('.popup__text');
-    // popupPicName.textContent = el.alt.substr(5);
 
     popupImgActive(el);
   } 
