@@ -5,6 +5,7 @@ const cardAddButton = document.querySelector('.profile__add');
 const popup = document.querySelector('.popup');
 const popupTitle = document.querySelector('.popup__title');
 const popupSave = document.querySelector('.popup__save');
+const popupContainer = document.querySelector('.popup__container');
 
 
 // Находим форму в DOM
@@ -45,6 +46,7 @@ function openAddCardPopup() {
 
 function closePopup() {
   popup.classList.remove('popup_opened');
+  popup.classList.remove('popup_opened_img');
   popupTitle.classList.remove('popup__title_opened');
   popupSave.classList.remove('popup__save_opened');
   popupTitle.textContent = '';
@@ -58,6 +60,10 @@ function closeEditProfilePopup() {
   popupInputValueTitle.classList.remove('popup__input_opened');
   popupInputValueLink.classList.remove('popup__input_opened');
   closePopup();
+  popup.classList.remove('popup_opened');
+  popupImg.classList.remove('popup__img_opened');
+  popupContainer.classList.remove('popup__container_opened');
+  popupText.classList.remove('popup__text_opened');
   // titleInput.value.reset();
   // linkInput.value.reset();
 }
@@ -112,11 +118,6 @@ initialCards.forEach((item) => {
   elementContainer.append(elementCard);
 });
 
-// let formCard = document.querySelector('.popup-add__edit'); 
-
-// let titleInput = document.querySelector('.popup-add__input_value_title');
-// let linkInput = document.querySelector('.popup-add__input_value_link');
-
 function cardSubmitHandler (evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
 
@@ -145,6 +146,16 @@ const likeClick = (el) => {
   el.classList.toggle('element__heart_active');
 }
 
+const popupImg = document.querySelector('.popup__img');
+const popupText = document.querySelector('.popup__text');
+
+const popupImgActive = (el) => {
+  popup.classList.add('popup_opened_img');
+  popupContainer.classList.add('popup__container_opened');
+  popupImg.classList.add('popup__img_opened');
+  popupText.classList.add('popup__text_opened');
+}
+
 elementContainer.addEventListener('click', (evt) => {
   const el = evt.target;
 
@@ -157,13 +168,16 @@ elementContainer.addEventListener('click', (evt) => {
   }
        
   if (el.classList.value === 'element__maskgroup') {
-    const popupPic = document.querySelector('.popup-img__pic');
-    // popupPic.src = el.src;
-    // popupPic.alt = el.alt;
 
-    const popupPicName = document.querySelector('.popup-img__text');
+    
+    popupImg.src = el.src;
+    popupImg.alt = el.alt;
+    popupText.textContent = el.alt.substr(5);
+    console.log(el.alt.substr(5));
+    // popupText.textContent = el.alt.substr(5);
+    // const popupPicName = document.querySelector('.popup__text');
     // popupPicName.textContent = el.alt.substr(5);
 
-    // popupImgActive(evt);
+    popupImgActive(el);
   } 
 });
