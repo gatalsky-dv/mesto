@@ -10,11 +10,7 @@
   z-index: 5;
   margin: 0;
   background-color: rgba(0, 0, 0, .5);
+  visibility: hidden;
   opacity: 0;
-  transition: visibility 0s, opacity 0.5s linear;
-}
-
-.popup:hover {
-  visibility: visible;
-  opacity: 1;
+  transition: opacity .8s linear, visibility .8s linear;
 }

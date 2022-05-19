@@ -41,20 +41,36 @@
   <footer class="footer">
     <p class="footer__text">&copy; 2022 Mesto Russia</p>
   </footer>
-
-  <div class="popup">
+<!-- первый popup -->
+  <div class="popup popup_user">
     <div class="popup__container">
-      <button aria-label="Закрыть" type="button" class="popup__close"></button>
-      <h3 class="popup__title"></h3>
-      <img src="#" alt="" class="popup__img">
-      <p class="popup__text"></p>
-      <form name="profile" class="popup__edit">
+      <button aria-label="Закрыть" type="button" class="popup__close popup__close_user"></button>
+      <h3 class="popup__title">Редактировать профиль</h3>
+      <form name="profile" class="popup__edit popup__edit_user">
         <input name="name" type="text" class="popup__input popup__input_value_name">
         <input name="job" type="text" class="popup__input popup__input_value_job">
+        <button type="submit" class="popup__save popup__save_user">Сохранить</button>
+      </form>
+    </div>
+  </div>
+<!-- второй popup -->
+  <div class="popup popup_card">
+    <div class="popup__container">
+      <button aria-label="Закрыть" type="button" class="popup__close popup__close_card"></button>
+      <h3 class="popup__title">Новое место</h3>
+      <form name="card" class="popup__edit popup__edit_card">
         <input name="title" type="text" placeholder="Название" class="popup__input popup__input_value_title">
         <input name="link" type="text" placeholder="Ссылка на картинку" class="popup__input popup__input_value_link">
-        <button type="submit" class="popup__save"></button>
+        <button type="submit" class="popup__save popup__save_card">Создать</button>
       </form>
+    </div>
+  </div>
+<!-- третий popup -->
+  <div class="popup popup_image">
+    <div class="popup__pic">
+      <button aria-label="Закрыть" type="button" class="popup__close popup__close_image"></button>
+      <img src="#" alt="" class="popup__img">
+      <p class="popup__text"></p>
     </div>
   </div>
 
