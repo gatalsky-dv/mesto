@@ -70,6 +70,11 @@ popupEditUser.addEventListener('submit', formSubmitEditProfilePopup);
 const elementTemplate = document.getElementById('element-template').content;
 const elementsContainer = document.querySelector('.elements');
 
+const renderCard = (elementCard) => {
+  elementsContainer.prepend(elementCard);
+}
+
+
 const createCard = ({name, link}) => {
   const elementCard = elementTemplate.querySelector('.element').cloneNode(true);
   const elementMaskgroup = elementCard.querySelector('.element__maskgroup');
@@ -77,14 +82,15 @@ const createCard = ({name, link}) => {
   elementName.textContent = name;
   elementMaskgroup.src = link;
   elementMaskgroup.alt = `Фото ${name}`;
-  elementsContainer.prepend(elementCard);
+  // elementsContainer.prepend(elementCard);
+  return elementCard;
 }
 
-initialCards.forEach(createCard);
+initialCards.forEach(elementCard => {renderCard(createCard(elementCard))});
 
 function formSubmitCardPopup (evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-  createCard({name: popupInputValueTitle.value, link: popupInputValueLink.value});
+  renderCard(createCard({name: popupInputValueTitle.value, link: popupInputValueLink.value}));
   evt.target.reset();
   closeAddCardPopup();
 }
