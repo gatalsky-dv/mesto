@@ -25,44 +25,42 @@ const popupInputValueLink = document.querySelector('.popup__input_value_link');
 const profileName = document.querySelector('.profile__name');
 const profileDescription = document.querySelector('.profile__description');
 
-function openEditProfilePopup() {
-  popupUser.classList.add('popup_opened');
+function openPopup(popupElement) {
+  popupElement.classList.add('popup_opened');
+}
+
+function closePopup(popupElement) {
+  popupElement.classList.remove('popup_opened');
+}
+
+profileEditButton.addEventListener('click', function () {
+  openPopup(popupUser);
   popupInputValueName.value = profileName.textContent;
   popupInputValueJob.value = profileDescription.textContent;
-}
+});
 
-function closeEditProfilePopup() {
-  popupUser.classList.remove('popup_opened');
-}
+profileCloseButton.addEventListener('click', function () {
+  closePopup(popupUser);
+});
 
-function openAddCardPopup() {
-  popupCard.classList.add('popup_opened');
-}
+cardAddButton.addEventListener('click', function () {
+  openPopup(popupCard);
+});
 
-function closeAddCardPopup() {
-  popupCard.classList.remove('popup_opened');
-}
+cardCloseButton.addEventListener('click', function () {
+  closePopup(popupCard);
+});
 
-function openImagePopup() {
-  popupImage.classList.add('popup_opened');
-}
-
-function closeImagePopup() {
-  popupImage.classList.remove('popup_opened');
-}
-
-profileEditButton.addEventListener('click', openEditProfilePopup);
-profileCloseButton.addEventListener('click', closeEditProfilePopup);
-cardAddButton.addEventListener('click', openAddCardPopup);
-cardCloseButton.addEventListener('click', closeAddCardPopup);
-imageCloseButton.addEventListener('click', closeImagePopup);
+imageCloseButton.addEventListener('click', function () {
+  closePopup(popupImage);
+});
 
 function formSubmitEditProfilePopup (evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   profileName.textContent = popupInputValueName.value;
   profileDescription.textContent = popupInputValueJob.value;
   evt.target.reset();
-  closeEditProfilePopup();
+  closePopup(popupUser);
 }
 
 popupEditUser.addEventListener('submit', formSubmitEditProfilePopup);
@@ -74,7 +72,6 @@ const renderCard = (elementCard) => {
   elementsContainer.prepend(elementCard);
 }
 
-
 const createCard = ({name, link}) => {
   const elementCard = elementTemplate.querySelector('.element').cloneNode(true);
   const elementMaskgroup = elementCard.querySelector('.element__maskgroup');
@@ -82,7 +79,6 @@ const createCard = ({name, link}) => {
   elementName.textContent = name;
   elementMaskgroup.src = link;
   elementMaskgroup.alt = `Фото ${name}`;
-  // elementsContainer.prepend(elementCard);
   return elementCard;
 }
 
@@ -92,7 +88,7 @@ function formSubmitCardPopup (evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   renderCard(createCard({name: popupInputValueTitle.value, link: popupInputValueLink.value}));
   evt.target.reset();
-  closeAddCardPopup();
+  closePopup(popupCard);
 }
 
 popupEditCard.addEventListener('submit', formSubmitCardPopup);
@@ -122,7 +118,7 @@ elementsContainer.addEventListener('click', (evt) => {
     popupImg.src = el.src;
     popupImg.alt = el.alt;
     popupText.textContent = el.alt.substr(5);
-    openImagePopup(el);
+    openPopup(popupImage);
     return;
   } 
 });
