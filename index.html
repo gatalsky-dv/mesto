@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="pages/index.css">
   <script defer src="./scripts/cards.js"></script>
   <script defer src="./scripts/index.js"></script>
+  <script defer src="./scripts/validate.js"></script>
   <title>Место</title>
 </head>
 
@@ -46,9 +47,11 @@
     <div class="popup__container">
       <button aria-label="Закрыть" type="button" class="popup__close popup__close_user"></button>
       <h3 class="popup__title">Редактировать профиль</h3>
-      <form name="profile" class="popup__edit popup__edit_user">
-        <input name="name" type="text" class="popup__input popup__input_value_name">
-        <input name="job" type="text" class="popup__input popup__input_value_job">
+      <form name="profile" class="popup__edit popup__edit_user" novalidate>
+        <input name="name" type="text" placeholder="Имя" class="popup__input popup__input_value_name" minlength="2" maxlength="40" required>
+        <span class="popup__error">Вы пропустили это поле</span>
+        <input name="job" type="text" placeholder="О себе" class="popup__input popup__input_value_job" minlength="2" maxlength="200" required>
+        <span class="popup__error">Вы пропустили это поле</span>
         <button type="submit" class="popup__save popup__save_user">Сохранить</button>
       </form>
     </div>
@@ -58,9 +61,11 @@
     <div class="popup__container">
       <button aria-label="Закрыть" type="button" class="popup__close popup__close_card"></button>
       <h3 class="popup__title">Новое место</h3>
-      <form name="card" class="popup__edit popup__edit_card">
-        <input name="title" type="text" placeholder="Название" class="popup__input popup__input_value_title">
-        <input name="link" type="text" placeholder="Ссылка на картинку" class="popup__input popup__input_value_link">
+      <form name="card" class="popup__edit popup__edit_card" novalidate>
+        <input name="title" type="text" placeholder="Название" class="popup__input popup__input_value_title" minlength="2" maxlength="30" required>
+        <span class="popup__error">Вы пропустили это поле</span>
+        <input name="link" type="url" placeholder="Ссылка на картинку" class="popup__input popup__input_value_link" required>
+        <span class="popup__error">Введите адрес сайта</span>
         <button type="submit" class="popup__save popup__save_card">Создать</button>
       </form>
     </div>
