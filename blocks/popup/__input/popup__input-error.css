@@ -1,6 +1,7 @@
-.popup__error {
+.popup__input-error {
   border: 1px solid black;
 
+  /* position: absolute; */
   margin: 0;
   font-weight: 400;
   font-size: 12px;
@@ -9,22 +10,22 @@
 }
 
 @media screen and (min-width: 320px) {
-  .popup__error {
+  .popup__input-error {
     margin: 5px 22px 0 22px;
     max-width: 238px;
-    width: 100%;
+    /* width: 100%; */
   }
 }
 
 @media screen and (min-width: 768px) {
-  .popup__error {
+  .popup__input-error {
     max-width: 330px;
     margin: 5px 17.5px 0 17.5px;
   }
 }
 
 @media screen and (min-width: 1024px) {
-  .popup__error {
+  .popup__input-error {
     max-width: 358px;
     margin: 5px 36px 0 36px;
   }
