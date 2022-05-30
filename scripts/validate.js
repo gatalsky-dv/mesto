@@ -39,6 +39,21 @@
 //   errorElement.classList.remove(errorSelector);
 //   inputElement.classList.remove(inputErrorModifier);
 //   errorElement.textContent = '';
+// }
+
+// const checkInputValidity = (formElement, inputElement, inputErrorModifier, errorSelector) => {
+//   if (!inputElement.validity.valid) {
+//     const errorMessage = inputElement.validationMessage;
+//     showInputError({formElement, inputElement, errorMessage, inputErrorModifier, errorSelector});
+//   } else {
+//     hideInputError(formElement, inputElement, inputErrorModifier, errorSelector);
+//   }
+// };
+
+// const hasInvalidInput = (formElement, inputElement, errorMessage, inputErrorModifier, errorSelector) => {
+//   return inputList.some((inputElement) => {
+//     return !inputElement.validity.valid;
+//   });
 // };
 
 // const toggleButtonState = (inputList, saveButton, disabledSelector) => {
@@ -53,7 +68,6 @@
 //                                         //valid1
 // const setEventListener = (formElement, inputSelector, submitButtonSelector, errorClass, inputErrorClass, inactiveButtonClass) => {
 //   const inputList = Array.from(formElement.querySelectorAll(`.${inputSelector}`));
-//   console.log('123');
 //   const saveButton = formElement.querySelector(`.${submitButtonSelector}`);
 //   inputList.forEach((inputElement) => {
 //     inputElement.addEventListener('input', () => {
@@ -75,23 +89,3 @@
 // };
 
 // enableValidation(config);
-
-// enableValidation({
-//   formSelector: '.popup__edit',
-//   inputSelector: '.popup__input',
-//   submitButtonSelector: '.popup__save',
-//   inactiveButtonClass: 'popup__save_disabled',
-//   inputErrorClass: 'popup__input_type_error',
-//   errorClass: 'popup__error_visible'
-// });
-
-const formElement = document.querySelector('.popup__edit');
-const formInput = formElement.querySelector('.popup__input');
-
-formElement.addEventListener('submit', (evt) => {
-  evt.preventDefault();
-});
-
-formInput.addEventListener('input', (evt) => {
-  console.log(evt.target.validity.valid);
-});
