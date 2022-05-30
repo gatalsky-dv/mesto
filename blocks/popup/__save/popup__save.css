@@ -13,6 +13,10 @@
   opacity: 0.8;
 }
 
+.popup__save:disabled {
+  opacity: 0.2;
+}
+
 @media screen and (min-width: 320px) {
   .popup__save {
     max-width: 238px;
@@ -39,6 +43,6 @@
 @media screen and (min-width: 1024px) {
   .popup__save {
     max-width: 358px;
-    margin: 48px 36px 37px 36px;
+    margin: 31.34px 36px 36.51px 36px;
   }
 }
