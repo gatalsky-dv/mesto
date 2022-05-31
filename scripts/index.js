@@ -13,6 +13,7 @@ const popupContainer = document.querySelector('.popup__container');
 const popupImg = document.querySelector('.popup__img');
 const popupText = document.querySelector('.popup__text');
 
+
 // Находим форму в DOM
 const popupEditUser = document.querySelector('.popup__edit_user'); // Воспользуйтесь методом querySelector()
 const popupEditCard = document.querySelector('.popup__edit_card');
@@ -32,6 +33,12 @@ function openPopup(popupElement) {
 function closePopup(popupElement) {
   popupElement.classList.remove('popup_opened');
 }
+
+const popup = document.querySelector('.popup');  
+
+popup.addEventListener('keydown', function () {
+  console.log('qwe');
+});
 
 profileEditButton.addEventListener('click', function () {
   openPopup(popupUser);

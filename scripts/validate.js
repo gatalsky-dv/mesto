@@ -1,8 +1,8 @@
 // enableValidation({
-//   formSelector: '.popup__form',                   //.popup__edit
+//   formSelector: '.popup__edit',                   //.popup__edit
 //   inputSelector: '.popup__input',                 //.popup__input
-//   submitButtonSelector: '.popup__button',         //.popup__save
-//   inactiveButtonClass: 'popup__button_disabled',  //.popup__save_disabled
+//   submitButtonSelector: '.popup__save',         //.popup__save
+//   inactiveButtonClass: 'popup__save_disabled',  //.popup__save_disabled
 //   inputErrorClass: 'popup__input_type_error',     //popup__input_type_error
 //   errorClass: 'popup__error_visible'              //popup__error_visible
 // }); 
@@ -10,6 +10,7 @@
 // Вынесем все необходимые элементы формы в константы
 const formSelector = document.querySelector('.popup__edit');
 const inputSelector = formSelector.querySelector('.popup__input');
+const inactiveButtonClass = formSelector.querySelector('popup__save_disabled');
 
 // Функция, которая добавляет класс с ошибкой
 const showInputError = (formSelector, inputSelector, errorMessage) => {
@@ -17,8 +18,8 @@ const showInputError = (formSelector, inputSelector, errorMessage) => {
   const errorElement = formSelector.querySelector(`.${inputSelector.id}-error`);
   inputSelector.classList.add('popup__input_type_error');
   // Заменим содержимое span с ошибкой на переданный параметр
-  errorElement .textContent = errorMessage;
-  errorElement .classList.add('popup__input-error_active');
+  errorElement.textContent = errorMessage;
+  errorElement.classList.add('popup__input-error_active');
 };
 
 // Функция, которая удаляет класс с ошибкой
@@ -26,9 +27,9 @@ const hideInputError = (formSelector, inputSelector) => {
   // Находим элемент ошибки
   const errorElement = formSelector.querySelector(`.${inputSelector.id}-error`);
   inputSelector.classList.remove('popup__input_type_error');
-  errorElement .classList.remove('popup__input-error_active');
+  errorElement.classList.remove('popup__input-error_active');
   // Очистим ошибку
-  errorElement .textContent = '';
+  errorElement.textContent = '';
 };
 
 // // Функция, которая проверяет валидность поля
@@ -37,14 +38,14 @@ const isValid = (formSelector, inputSelector) => {
     // Если поле не проходит валидацию, покажем ошибку
     showInputError(formSelector, inputSelector, inputSelector.validationMessage);
   } else {
-    // Если проходит, скроем
+    // Если проходит, Исследователь океанаскроем
     hideInputError(formSelector, inputSelector);
   }
 };
 
 const setEventListeners = (formSelector) => {
   // Найдём все поля формы и сделаем из них массив
-  const inputList = Array.from(formSelector.querySelectorAll(`.popup__input`));
+  const inputList = Array.from(formSelector.querySelectorAll('.popup__input'));
   // Найдём в текущей форме кнопку отправки
   const submitButtonSelector = formSelector.querySelector('.popup__save');
 
@@ -61,6 +62,8 @@ const setEventListeners = (formSelector) => {
 formSelector.addEventListener('submit', function (evt) {
   // Отменим стандартное поведение по сабмиту
   evt.preventDefault();
+  evt.target.reset();
+  keyHandler();
 });
 
 const enableValidation = () => {
@@ -73,6 +76,7 @@ const enableValidation = () => {
     formSelector.addEventListener('submit', (evt) => {
       // У каждой формы отменим стандартное поведение
       evt.preventDefault();
+      evt.target.reset();
     });
 
     // Для каждой формы вызовем функцию setEventListeners,
@@ -100,15 +104,15 @@ const hasInvalidInput = (inputList) => {
 // Функция принимает массив полей ввода
 // и элемент кнопки, состояние которой нужно менять
 
-const toggleButtonState = (inputList, submitButtonSelector) => {
+const toggleButtonState = (inputList, submitButtonSelector, inactiveButtonClass) => {
   // Если есть хотя бы один невалидный инпут
   if (hasInvalidInput(inputList)) {
     // сделай кнопку неактивной
-    submitButtonSelector.classList.add('popup__save_disabled');
+    submitButtonSelector.classList.add(inactiveButtonClass);
     submitButtonSelector.setAttribute('disabled', 'true');
   } else {
     // иначе сделай кнопку активной
-    submitButtonSelector.classList.remove('popup__save_disabled');
+    submitButtonSelector.classList.remove(inactiveButtonClass);
     submitButtonSelector.removeAttribute('disabled', 'false');
   }
 };

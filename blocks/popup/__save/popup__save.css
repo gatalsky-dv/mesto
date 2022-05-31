@@ -23,7 +23,7 @@
     max-width: 238px;
     width: 100%;
     height: 46px;
-    margin: 45px 22px 25px 22px;
+    margin: 48.34px 22px 25px 22px;
     font-size: 14px;
     line-height: 17px;
   }
@@ -34,7 +34,7 @@
     background-size: cover;
     max-width: 330px;
     height: 50px;
-    margin: 48px 17.5px 37px 17.5px;
+    margin: 48.34px 17.5px 37px 17.5px;
     font-size: 18px;
     line-height: 22px;
 
@@ -44,6 +44,6 @@
 @media screen and (min-width: 1024px) {
   .popup__save {
     max-width: 358px;
-    margin: 31.34px 36px 36.51px 36px;
+    margin: 48.34px 36px 36.51px 36px;
   }
 }
