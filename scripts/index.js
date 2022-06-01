@@ -13,7 +13,6 @@ const popupContainer = document.querySelector('.popup__container');
 const popupImg = document.querySelector('.popup__img');
 const popupText = document.querySelector('.popup__text');
 
-
 // Находим форму в DOM
 const popupEditUser = document.querySelector('.popup__edit_user'); // Воспользуйтесь методом querySelector()
 const popupEditCard = document.querySelector('.popup__edit_card');
@@ -34,10 +33,18 @@ function closePopup(popupElement) {
   popupElement.classList.remove('popup_opened');
 }
 
-const popup = document.querySelector('.popup');  
+document.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === 27) {
+    const openedPopupKeydown = document.querySelector('.popup_opened');
+    closePopup(openedPopupKeydown);
+  }
+});
 
-popup.addEventListener('keydown', function () {
-  console.log('qwe');
+document.addEventListener('mousedown', function (evt) {
+  const openedPopupMousedown = document.querySelector('.popup_opened');
+  if(evt.target === openedPopupMousedown){
+    closePopup(openedPopupMousedown);
+  }
 });
 
 profileEditButton.addEventListener('click', function () {

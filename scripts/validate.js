@@ -1,12 +1,3 @@
-// enableValidation({
-//   formSelector: '.popup__edit',                   //.popup__edit
-//   inputSelector: '.popup__input',                 //.popup__input
-//   submitButtonSelector: '.popup__save',         //.popup__save
-//   inactiveButtonClass: 'popup__save_disabled',  //.popup__save_disabled
-//   inputErrorClass: 'popup__input_type_error',     //popup__input_type_error
-//   errorClass: 'popup__error_visible'              //popup__error_visible
-// }); 
-
 // Вынесем все необходимые элементы формы в константы
 const formSelector = document.querySelector('.popup__edit');
 const inputSelector = formSelector.querySelector('.popup__input');
