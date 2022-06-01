@@ -54,7 +54,6 @@ formSelector.addEventListener('submit', function (evt) {
   // Отменим стандартное поведение по сабмиту
   evt.preventDefault();
   evt.target.reset();
-  keyHandler();
 });
 
 const enableValidation = () => {
