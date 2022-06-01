@@ -53,8 +53,6 @@ const setEventListeners = (formSelector) => {
 formSelector.addEventListener('submit', function (evt) {
   // Отменим стандартное поведение по сабмиту
   evt.preventDefault();
-  evt.target.reset();
-  keyHandler();
 });
 
 const enableValidation = () => {
@@ -67,7 +65,6 @@ const enableValidation = () => {
     formSelector.addEventListener('submit', (evt) => {
       // У каждой формы отменим стандартное поведение
       evt.preventDefault();
-      evt.target.reset();
     });
 
     // Для каждой формы вызовем функцию setEventListeners,
