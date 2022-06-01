@@ -33,6 +33,20 @@ function closePopup(popupElement) {
   popupElement.classList.remove('popup_opened');
 }
 
+document.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === 27) {
+    const openedPopupKeydown = document.querySelector('.popup_opened');
+    closePopup(openedPopupKeydown);
+  }
+});
+
+document.addEventListener('mousedown', function (evt) {
+  const openedPopupMousedown = document.querySelector('.popup_opened');
+  if(evt.target === openedPopupMousedown){
+    closePopup(openedPopupMousedown);
+  }
+});
+
 profileEditButton.addEventListener('click', function () {
   openPopup(popupUser);
   popupInputValueName.value = profileName.textContent;
