@@ -25,62 +25,45 @@ const popupInputValueLink = document.querySelector('.popup__input_value_link');
 const profileName = document.querySelector('.profile__name');
 const profileDescription = document.querySelector('.profile__description');
 
-function openPopup(popupElement) {
+const elementTemplate = document.getElementById('element-template').content;
+const elementsContainer = document.querySelector('.elements');
+
+const ESCAPE = 27;
+
+// функции
+const openPopup = (popupElement) => {
   popupElement.classList.add('popup_opened');
+  document.addEventListener('keydown', pressEscape);
+  document.addEventListener('mousedown', closeOverlay);
 }
 
-function closePopup(popupElement) {
+const closePopup = (popupElement) => {
   popupElement.classList.remove('popup_opened');
+  document.removeEventListener('keydown', pressEscape);
+  document.removeEventListener('mousedown', closeOverlay);
 }
 
-document.addEventListener('keydown', function (evt) {
-  if (evt.keyCode === 27) {
-    const openedPopupKeydown = document.querySelector('.popup_opened');
+const pressEscape = (evt) => {
+  if (evt.keyCode === ESCAPE) {
+    const openedPopupKeydown = document.querySelector('.popup_opened'); 
     closePopup(openedPopupKeydown);
   }
-});
+}
 
-document.addEventListener('mousedown', function (evt) {
+const closeOverlay = (evt) => {
   const openedPopupMousedown = document.querySelector('.popup_opened');
-  if(evt.target === openedPopupMousedown){
+  if (evt.target === openedPopupMousedown){
     closePopup(openedPopupMousedown);
   }
-});
+}
 
-profileEditButton.addEventListener('click', function () {
-  openPopup(popupUser);
-  popupInputValueName.value = profileName.textContent;
-  popupInputValueJob.value = profileDescription.textContent;
-});
-
-profileCloseButton.addEventListener('click', function () {
-  closePopup(popupUser);
-});
-
-cardAddButton.addEventListener('click', function () {
-  openPopup(popupCard);
-});
-
-cardCloseButton.addEventListener('click', function () {
-  closePopup(popupCard);
-});
-
-imageCloseButton.addEventListener('click', function () {
-  closePopup(popupImage);
-});
-
-function formSubmitEditProfilePopup (evt) {
+const handleSubmitEditProfileForm = (evt) => {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   profileName.textContent = popupInputValueName.value;
   profileDescription.textContent = popupInputValueJob.value;
   evt.target.reset();
   closePopup(popupUser);
 }
-
-popupEditUser.addEventListener('submit', formSubmitEditProfilePopup);
-
-const elementTemplate = document.getElementById('element-template').content;
-const elementsContainer = document.querySelector('.elements');
 
 const renderCard = (elementCard) => {
   elementsContainer.prepend(elementCard);
@@ -93,46 +76,70 @@ const createCard = ({name, link}) => {
   elementName.textContent = name;
   elementMaskgroup.src = link;
   elementMaskgroup.alt = `Фото ${name}`;
+  document.addEventListener('click', deleteCard);
+  document.addEventListener('click', clickHeart);
+  document.addEventListener('click', openPreviewPopup);
   return elementCard;
 }
 
-initialCards.forEach(elementCard => {renderCard(createCard(elementCard))});
-
-function formSubmitCardPopup (evt) {
+const handleSubmitAddCardForm = (evt) => {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   renderCard(createCard({name: popupInputValueTitle.value, link: popupInputValueLink.value}));
   evt.target.reset();
   closePopup(popupCard);
 }
 
-popupEditCard.addEventListener('submit', formSubmitCardPopup);
-
-const cardDelete = (el) => {
-  el.closest('.element').remove();
-}
-
-const likeClick = (el) => {
-  el.classList.toggle('element__heart_active');
-}
-
-elementsContainer.addEventListener('click', (evt) => {
-  const el = evt.target;
-
-  if (el.classList.contains('element__heart')) {
-    likeClick(el);
-    return;
-  } 
-
-  if (el.classList.contains('element__trash')) {
-    cardDelete(el);
-    return;
-  }
-       
-  if (el.classList.contains('element__maskgroup')) {
-    popupImg.src = el.src;
-    popupImg.alt = el.alt;
-    popupText.textContent = el.alt.substr(5);
+const openPreviewPopup = (evt) => {
+  if (evt.target.classList.contains('element__maskgroup')) {
+    popupImg.src = evt.target.src;
+    popupImg.alt = evt.target.alt;
+    popupText.textContent = evt.target.alt.substr(5);
     openPopup(popupImage);
     return;
-  } 
+  }
+}
+
+const deleteCard = (evt) => {
+  if (evt.target.classList.contains('element__trash')) {
+  evt.target.closest('.element').remove();
+  return;
+  }
+}
+
+const clickHeart = (evt) => {
+  if (evt.target.classList.contains('element__heart')) {
+    evt.target.classList.toggle('element__heart_active');
+    return;
+  }
+}
+
+// обработчики
+profileEditButton.addEventListener('click', function () {
+  popupInputValueName.value = profileName.textContent;
+  popupInputValueJob.value = profileDescription.textContent;
+  openPopup(popupUser);
 });
+
+profileCloseButton.addEventListener('click', function () {
+  closePopup(popupUser);
+});
+
+cardAddButton.addEventListener('click', function () {
+  openPopup(popupCard);
+  popupSave.setAttribute('disabled', true);
+});
+
+cardCloseButton.addEventListener('click', function () {
+  closePopup(popupCard);
+});
+
+imageCloseButton.addEventListener('click', function () {
+  closePopup(popupImage);
+});
+
+popupEditUser.addEventListener('submit', handleSubmitEditProfileForm);
+
+popupEditCard.addEventListener('submit', handleSubmitAddCardForm);
+
+initialCards.forEach(elementCard => {renderCard(createCard(elementCard))});
+

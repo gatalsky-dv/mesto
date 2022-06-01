@@ -1,3 +1,5 @@
 .popup__save_disabled {
   opacity: 0.2;
+  background: white;
+  color: #E5E5E5;
 }
