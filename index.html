@@ -47,7 +47,7 @@
     <div class="popup__container">
       <button aria-label="Закрыть" type="button" class="popup__close popup__close_user"></button>
       <h3 class="popup__title">Редактировать профиль</h3>
-      <form name="profile" method="get" class="popup__edit popup__edit_user" novalidate>
+      <form name="profile" method="get" class="popup__form popup__edit_user" novalidate>
         <input
           type="text"
           class="popup__input popup__input_value_name"
@@ -58,7 +58,7 @@
           minlength="2"
           maxlength="40"
         >
-        <span class="name-input-error popup__input-error"></span>
+        <span class="name-input-error popup__input_type_error"></span>
         <input
           type="text"
           class="popup__input popup__input_value_job"
@@ -69,8 +69,8 @@
           minlength="2"
           maxlength="200"
         >
-        <span class="job-input-error popup__input-error"></span>
-        <button type="submit" class="popup__save popup__save_user">Сохранить</button>
+        <span class="job-input-error popup__input_type_error"></span>
+        <button type="submit" class="popup__button">Сохранить</button>
       </form>
     </div>
   </div>
@@ -79,7 +79,7 @@
     <div class="popup__container">
       <button aria-label="Закрыть" type="button" class="popup__close popup__close_card"></button>
       <h3 class="popup__title">Новое место</h3>
-      <form name="card" class="popup__edit popup__edit_card" novalidate>
+      <form name="card" class="popup__form popup__edit_card" novalidate>
         <input
           type="text"
           class="popup__input popup__input_value_title"
@@ -90,7 +90,7 @@
           minlength="2"
           maxlength="30"
         >
-        <span class="title-input-error popup__input-error"></span>
+        <span class="title-input-error popup__input_type_error"></span>
         <input
           type="url"
           class="popup__input popup__input_value_link"
@@ -100,7 +100,7 @@
           required
         >
         <span class="link-input-error popup__input-error"></span>
-        <button type="submit" class="popup__save popup__save_card popup__save_disabled" disabled="true">Создать</button>
+        <button type="submit" class="popup__button" disabled="true">Создать</button>
       </form>
     </div>
   </div>

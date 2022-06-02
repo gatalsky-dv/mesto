@@ -1,10 +1,14 @@
-// Вынесем все необходимые элементы формы в константы
-const formSelector = document.querySelector('.popup__edit');
-const inputSelector = formSelector.querySelector('.popup__input');
-const inactiveButtonClass = formSelector.querySelector('popup__save_disabled');
+const config = {
+  formSelector: 'popup__form',
+  inputSelector: 'popup__input',
+  submitButtonSelector: 'popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible'
+}
 
 // Функция, которая добавляет класс с ошибкой
-const showInputError = (formSelector, inputSelector, errorMessage) => {
+const showInputError = (config, errorMessage) => {
   // Находим элемент ошибки внутри самой функции
   const errorElement = formSelector.querySelector(`.${inputSelector.id}-error`);
   inputSelector.classList.add('popup__input_type_error');
@@ -24,7 +28,7 @@ const hideInputError = (formSelector, inputSelector) => {
 };
 
 // // Функция, которая проверяет валидность поля
-const isValid = (formSelector, inputSelector) => {
+const checkInputValidity = (formSelector, inputSelector) => {
   if (!inputSelector.validity.valid) {
     // Если поле не проходит валидацию, покажем ошибку
     showInputError(formSelector, inputSelector, inputSelector.validationMessage);
@@ -42,7 +46,7 @@ const setEventListeners = (formSelector) => {
 
   inputList.forEach((inputSelector) => {
     inputSelector.addEventListener('input', () => {
-      isValid(formSelector, inputSelector);
+      checkInputValidity(formSelector, inputSelector);
 
       // Вызовем toggleButtonState и передадим ей массив полей и кнопку
       toggleButtonState(inputList, submitButtonSelector);
@@ -55,13 +59,13 @@ formSelector.addEventListener('submit', function (evt) {
   evt.preventDefault();
 });
 
-const enableValidation = () => {
+const enableValidation = (config) => {
   // Найдём все формы с указанным классом в DOM,
   // сделаем из них массив методом Array.from
-  const formList = Array.from(document.querySelectorAll('.popup__edit'));
+  const formList = Array.from(document.querySelectorAll(config.formSelector));
 
   // Переберём полученную коллекцию
-  formList.forEach((formSelector) => {
+  formList.forEach((form) => {
     formSelector.addEventListener('submit', (evt) => {
       // У каждой формы отменим стандартное поведение
       evt.preventDefault();
@@ -69,12 +73,10 @@ const enableValidation = () => {
 
     // Для каждой формы вызовем функцию setEventListeners,
     // передав ей элемент формы
-    setEventListeners(formSelector);
+    setEventListeners(form, config);
   });
 };
 
-// Вызовем функцию
-enableValidation();
 
 // Функция принимает массив полей
 
@@ -105,3 +107,7 @@ const toggleButtonState = (inputList, submitButtonSelector, inactiveButtonClass)
     submitButtonSelector.removeAttribute('disabled', 'false');
   }
 };
+
+
+// Вызовем функцию
+enableValidation(config);

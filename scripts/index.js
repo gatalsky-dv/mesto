@@ -8,7 +8,7 @@ const popupUser = document.querySelector('.popup_user');
 const popupCard = document.querySelector('.popup_card');
 const popupImage = document.querySelector('.popup_image');
 const popupTitle = document.querySelector('.popup__title');
-const popupSave = document.querySelector('.popup__save');
+const popupButtonSave = document.querySelector('.popup__button');
 const popupContainer = document.querySelector('.popup__container');
 const popupImg = document.querySelector('.popup__img');
 const popupText = document.querySelector('.popup__text');
@@ -126,7 +126,7 @@ profileCloseButton.addEventListener('click', function () {
 
 cardAddButton.addEventListener('click', function () {
   openPopup(popupCard);
-  popupSave.setAttribute('disabled', true);
+  popupButtonSave.setAttribute('disabled', true);
 });
 
 cardCloseButton.addEventListener('click', function () {
