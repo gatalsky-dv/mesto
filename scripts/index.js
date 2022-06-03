@@ -12,8 +12,10 @@ const popupButtonSave = document.querySelector('.popup__button');
 const popupContainer = document.querySelector('.popup__container');
 const popupImg = document.querySelector('.popup__img');
 const popupText = document.querySelector('.popup__text');
+// const popupButton = document.querySelector('.popup__button');
 
 // Находим форму в DOM
+const popupForm = document.querySelector('.popup__form');
 const popupEditUser = document.querySelector('.popup__edit_user'); // Воспользуйтесь методом querySelector()
 const popupEditCard = document.querySelector('.popup__edit_card');
 // Находим поля формы в DOM
@@ -35,6 +37,7 @@ const openPopup = (popupElement) => {
   popupElement.classList.add('popup_opened');
   document.addEventListener('keydown', pressEscape);
   document.addEventListener('mousedown', closeOverlay);
+  removeErrors(popupElement);
 }
 
 const closePopup = (popupElement) => {
@@ -113,7 +116,26 @@ const clickHeart = (evt) => {
   }
 }
 
+const removeErrors = (formElement) => {
+  const inputArray = Array.from(formElement.querySelectorAll('.popup__input'));
+  inputArray.forEach(removeSelectors);
+}
+
+const removeSelectors = (inputElement) => {
+  inputElement.classList.remove('popup__input_type_error');
+  const errorElement = document.querySelector(`.${inputElement.id}-error`);
+  errorElement.textContent = '';
+  errorElement.classList.remove('popup__error_visible');
+}
+
+const lockButton = (buttonDisabled) => {
+  const submitButton = buttonDisabled.querySelector('.popup__button');
+  submitButton.disabled = true;
+  submitButton.classList.add('popup__button_disabled');
+}
+
 // обработчики
+
 profileEditButton.addEventListener('click', function () {
   popupInputValueName.value = profileName.textContent;
   popupInputValueJob.value = profileDescription.textContent;
@@ -125,8 +147,10 @@ profileCloseButton.addEventListener('click', function () {
 });
 
 cardAddButton.addEventListener('click', function () {
+  popupInputValueTitle.value = '';
+  popupInputValueLink.value = '';
+  lockButton(popupCard);
   openPopup(popupCard);
-  popupButtonSave.setAttribute('disabled', true);
 });
 
 cardCloseButton.addEventListener('click', function () {
