@@ -16,8 +16,8 @@ const popupText = document.querySelector('.popup__text');
 
 // Находим форму в DOM
 const popupForm = document.querySelector('.popup__form');
-const popupEditUser = document.querySelector('.popup__edit_user'); // Воспользуйтесь методом querySelector()
-const popupEditCard = document.querySelector('.popup__edit_card');
+const popupEditUser = document.querySelector('.popup__form_user'); // Воспользуйтесь методом querySelector()
+const popupEditCard = document.querySelector('.popup__form_card');
 // Находим поля формы в DOM
 const popupInputValueName = document.querySelector('.popup__input_value_name');
 const popupInputValueJob = document.querySelector('.popup__input_value_job');
