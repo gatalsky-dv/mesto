@@ -4,7 +4,7 @@ const config = {
   submitButtonSelector: 'popup__button',
   inactiveButtonClass: 'popup__button_disabled',
   inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
+  errorClass: 'popup__input_error_visible'
 }
 
 // Функция, которая добавляет класс с ошибкой
