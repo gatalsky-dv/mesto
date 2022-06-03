@@ -9,13 +9,9 @@
   border-bottom: 1px solid rgba(0, 0, 0, .2);
 }
 
-/* .popup__input:invalid {
-  border-bottom: 1px solid #FF0000;
-} */
-
 @media screen and (min-width: 320px) {
   .popup__input {
-    margin: 13px 22px 0 22px;
+    margin: 30px 22px 0 22px;
     max-width: 238px;
     width: 100%;
     height: 27px;
@@ -25,13 +21,13 @@
 @media screen and (min-width: 768px) {
   .popup__input {
     max-width: 330px;
-    margin: 13px 17.5px 0 17.5px;
+    margin: 30px 17.5px 0 17.5px;
   }
 }
 
 @media screen and (min-width: 1024px) {
   .popup__input {
     max-width: 358px;
-    margin: 13px 36px 0 36px;
+    margin: 30px 36px 0 36px;
   }
 }
