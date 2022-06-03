@@ -125,7 +125,7 @@ const removeSelectors = (inputElement) => {
   inputElement.classList.remove('popup__input_type_error');
   const errorElement = document.querySelector(`.${inputElement.id}-error`);
   errorElement.textContent = '';
-  errorElement.classList.remove('popup__error_visible');
+  errorElement.classList.remove('popup__input_error_visible');
 }
 
 const lockButton = (buttonDisabled) => {
