@@ -1,7 +1,7 @@
 const config = {
-  formSelector: 'popup__form',
-  inputSelector: 'popup__input',
-  submitButtonSelector: 'popup__button',
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
   inactiveButtonClass: 'popup__button_disabled',
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__input_error_visible'
@@ -9,9 +9,8 @@ const config = {
 
 // Функция, которая добавляет класс с ошибкой
 
-const showInputError = (inputConfig) => {
+const showInputError = (formElement, inputElement, errorMessage, inputErrorModifier, errorSelector) => {
   // Находим элемент ошибки внутри самой функции
-  const {formElement, inputElement, errorMessage, inputErrorModifier, errorSelector} = inputConfig;
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   // Заменим содержимое span с ошибкой на переданный параметр
   errorElement.textContent = errorMessage;
@@ -37,7 +36,7 @@ const checkInputValidity = (formElement, inputElement, inputErrorModifier, error
   if (!inputElement.validity.valid) {
     const errorMessage = inputElement.validationMessage;
     // Если поле не проходит валидацию, покажем ошибку
-    showInputError({formElement, inputElement, errorMessage, inputErrorModifier, errorSelector});
+    showInputError(formElement, inputElement, errorMessage, inputErrorModifier, errorSelector);
   } else {
     // Если проходит, скрываем
     hideInputError(formElement, inputElement, inputErrorModifier, errorSelector);
@@ -46,12 +45,11 @@ const checkInputValidity = (formElement, inputElement, inputErrorModifier, error
 
 const setEventListeners = (formElement, config) => {
   // Найдём все поля формы и сделаем из них массив
-  const inputList = Array.from(formElement.querySelectorAll(`.${config.inputSelector}`));
-  const saveButton = formElement.querySelector(`.${config.submitButtonSelector}`);
+  const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', function () {
       checkInputValidity(formElement, inputElement, config.inputErrorClass, config.errorClass);
-      toggleButtonState(inputList, saveButton, config.inactiveButtonClass);
+      toggleButtonState(inputList, formElement, config.submitButtonSelector, config.inactiveButtonClass);
     });
   });
 };
@@ -59,7 +57,7 @@ const setEventListeners = (formElement, config) => {
 const enableValidation = (config) => {
   // Найдём все формы с указанным классом в DOM,
   // сделаем из них массив методом Array.from
-  const formList = Array.from(document.querySelectorAll(`.${config.formSelector}`));
+  const formList = Array.from(document.querySelectorAll(config.formSelector));
   // Переберём полученную коллекцию
   formList.forEach((formElement) => {
     formElement.addEventListener('submit', (evt) => {
@@ -85,19 +83,28 @@ const hasInvalidInput = (inputList) => {
 
 // Функция принимает массив полей ввода
 // и элемент кнопки, состояние которой нужно менять
-const toggleButtonState = (inputList, saveButton, disabledSelector) => {
+const toggleButtonState = (inputList, formElement, buttonSelector, disabledSelector) => {
   // Если есть хотя бы один невалидный инпут
   if (hasInvalidInput(inputList)) {
     // сделай кнопку неактивной
-    saveButton.classList.add(disabledSelector);
-    saveButton.disabledSelector = true;
-    saveButton.disabled = true;
+    lockButton(formElement, buttonSelector, disabledSelector);
   } else {
     // иначе сделай кнопку активной
-    saveButton.classList.remove(disabledSelector);
-    saveButton.disabledSelector = false;
-    saveButton.disabled = false;
+    unlockButton(formElement, buttonSelector, disabledSelector);
   }
+};
+
+const lockButton = (formElement, buttonSelector, disabledSelector) => {
+  const lockSaveButton = formElement.querySelector(buttonSelector);
+  lockSaveButton.disabled = true;
+  lockSaveButton.classList.add(disabledSelector);
+};
+
+const unlockButton = (formElement, buttonSelector, disabledSelector) => {
+  const unlockSaveButton = formElement.querySelector(buttonSelector);
+  unlockSaveButton.disabledSelector = false;
+  unlockSaveButton.disabled = false;
+  unlockSaveButton.classList.remove(disabledSelector);
 };
 
 // Вызовем функцию
