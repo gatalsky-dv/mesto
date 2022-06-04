@@ -7,15 +7,10 @@ const cardAddButton = document.querySelector('.profile__add');
 const popupUser = document.querySelector('.popup_user');
 const popupCard = document.querySelector('.popup_card');
 const popupImage = document.querySelector('.popup_image');
-const popupTitle = document.querySelector('.popup__title');
-const popupButtonSave = document.querySelector('.popup__button');
-const popupContainer = document.querySelector('.popup__container');
 const popupImg = document.querySelector('.popup__img');
 const popupText = document.querySelector('.popup__text');
-// const popupButton = document.querySelector('.popup__button');
 
 // Находим форму в DOM
-const popupForm = document.querySelector('.popup__form');
 const popupEditUser = document.querySelector('.popup__form_user'); // Воспользуйтесь методом querySelector()
 const popupEditCard = document.querySelector('.popup__form_card');
 // Находим поля формы в DOM
@@ -35,18 +30,17 @@ const ESCAPE = 27;
 // функции
 const openPopup = (popupElement) => {
   popupElement.classList.add('popup_opened');
-  document.addEventListener('keydown', pressEscape);
+  document.addEventListener('keydown', handlePressEscape);
   document.addEventListener('mousedown', closeOverlay);
-  removeErrors(popupElement);
 }
 
 const closePopup = (popupElement) => {
   popupElement.classList.remove('popup_opened');
-  document.removeEventListener('keydown', pressEscape);
+  document.removeEventListener('keydown', handlePressEscape);
   document.removeEventListener('mousedown', closeOverlay);
 }
 
-const pressEscape = (evt) => {
+const handlePressEscape = (evt) => {
   if (evt.keyCode === ESCAPE) {
     const openedPopupKeydown = document.querySelector('.popup_opened'); 
     closePopup(openedPopupKeydown);
@@ -75,13 +69,15 @@ const renderCard = (elementCard) => {
 const createCard = ({name, link}) => {
   const elementCard = elementTemplate.querySelector('.element').cloneNode(true);
   const elementMaskgroup = elementCard.querySelector('.element__maskgroup');
+  const elementHeart = elementCard.querySelector('.element__heart');
+  const elementTrash = elementCard.querySelector('.element__trash');
   const elementName = elementCard.querySelector('.element__name');
   elementName.textContent = name;
   elementMaskgroup.src = link;
   elementMaskgroup.alt = `Фото ${name}`;
-  document.addEventListener('click', deleteCard);
-  document.addEventListener('click', clickHeart);
-  document.addEventListener('click', openPreviewPopup);
+  elementMaskgroup.addEventListener('click', openPreviewPopup);
+  elementHeart.addEventListener('click', clickHeart);
+  elementTrash.addEventListener('click', deleteCard);
   return elementCard;
 }
 
@@ -93,27 +89,18 @@ const handleSubmitAddCardForm = (evt) => {
 }
 
 const openPreviewPopup = (evt) => {
-  if (evt.target.classList.contains('element__maskgroup')) {
-    popupImg.src = evt.target.src;
-    popupImg.alt = evt.target.alt;
-    popupText.textContent = evt.target.alt.substr(5);
-    openPopup(popupImage);
-    return;
-  }
+  popupImg.src = evt.target.src;
+  popupImg.alt = evt.target.alt;
+  popupText.textContent = evt.target.alt.substr(5);
+  openPopup(popupImage);
 }
 
 const deleteCard = (evt) => {
-  if (evt.target.classList.contains('element__trash')) {
   evt.target.closest('.element').remove();
-  return;
-  }
 }
 
 const clickHeart = (evt) => {
-  if (evt.target.classList.contains('element__heart')) {
-    evt.target.classList.toggle('element__heart_active');
-    return;
-  }
+  evt.target.classList.toggle('element__heart_active');
 }
 
 const removeErrors = (formElement) => {
@@ -128,17 +115,13 @@ const removeSelectors = (inputElement) => {
   errorElement.classList.remove('popup__input_error_visible');
 }
 
-const lockButton = (buttonDisabled) => {
-  const submitButton = buttonDisabled.querySelector('.popup__button');
-  submitButton.disabled = true;
-  submitButton.classList.add('popup__button_disabled');
-}
-
 // обработчики
 
 profileEditButton.addEventListener('click', function () {
   popupInputValueName.value = profileName.textContent;
   popupInputValueJob.value = profileDescription.textContent;
+  removeErrors(popupUser);
+  unlockButton(popupEditUser, config.submitButtonSelector, config.inactiveButtonClass);
   openPopup(popupUser);
 });
 
@@ -149,7 +132,8 @@ profileCloseButton.addEventListener('click', function () {
 cardAddButton.addEventListener('click', function () {
   popupInputValueTitle.value = '';
   popupInputValueLink.value = '';
-  lockButton(popupCard);
+  lockButton(popupEditCard, config.submitButtonSelector, config.inactiveButtonClass);
+  removeErrors(popupCard);
   openPopup(popupCard);
 });
 
