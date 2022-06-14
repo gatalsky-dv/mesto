@@ -145,7 +145,7 @@ cardAddButton.addEventListener('click', function () {
   popupInputValueTitle.value = '';
   popupInputValueLink.value = '';
   FormValidators[cardAddButton.name].lockButton();
-  // lockButton(popupEditCard, configValidator.submitButtonSelector, configValidator.inactiveButtonClass);
+  lockButton(popupEditCard, configValidator.submitButtonSelector, configValidator.inactiveButtonClass);
   removeErrors(popupCard);
   openPopup(popupCard);
 });
