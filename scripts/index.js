@@ -1,3 +1,6 @@
+import {initialCards, configValidator} from './Card.js';
+import FormValidator from './FormValidator.js';
+
 // редактировать профиль
 const profileEditButton = document.querySelector('.profile__edit');
 const profileCloseButton = document.querySelector('.popup__close_user');
@@ -115,13 +118,22 @@ const removeSelectors = (inputElement) => {
   errorElement.classList.remove('popup__input_error_visible');
 }
 
+const FormValidators = {}
+
+Array.from(document.forms).forEach((formElement) => {
+  FormValidators[formElement.name] = new FormValidator(configValidator, formElement);
+  FormValidators[formElement.name].enableValidation();
+});
+
 // обработчики
 
 profileEditButton.addEventListener('click', function () {
   popupInputValueName.value = profileName.textContent;
   popupInputValueJob.value = profileDescription.textContent;
+  
   removeErrors(popupUser);
-  unlockButton(popupEditUser, config.submitButtonSelector, config.inactiveButtonClass);
+  FormValidators[profileEditButton.name].unlockButton();
+  // unlockButton(popupEditUser, config.submitButtonSelector, config.inactiveButtonClass);
   openPopup(popupUser);
 });
 
@@ -132,7 +144,8 @@ profileCloseButton.addEventListener('click', function () {
 cardAddButton.addEventListener('click', function () {
   popupInputValueTitle.value = '';
   popupInputValueLink.value = '';
-  lockButton(popupEditCard, config.submitButtonSelector, config.inactiveButtonClass);
+  FormValidators[cardAddButton.name].lockButton();
+  // lockButton(popupEditCard, configValidator.submitButtonSelector, configValidator.inactiveButtonClass);
   removeErrors(popupCard);
   openPopup(popupCard);
 });
