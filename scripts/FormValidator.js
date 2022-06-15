@@ -48,7 +48,7 @@ export class FormValidator {
     // 
     if (this._hasInvalidInput(inputList)) {
       console.log('че тут?');
-      console.log(lockButton);
+      // console.log(lockButton);
       lockButton();
     } else {
       unlockButton();
@@ -57,8 +57,6 @@ export class FormValidator {
 
   enableValidation() {
     const inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
-    const saveButton = this._formElement.querySelector(this._submitButtonSelector);
-    const inactiveButton = this._formElement.querySelector(this._inactiveButtonClass);
     inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         this._checkInputValidity(inputElement);
