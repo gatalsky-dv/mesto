@@ -132,8 +132,7 @@ profileEditButton.addEventListener('click', function () {
   popupInputValueJob.value = profileDescription.textContent;
   
   removeErrors(popupUser);
-  FormValidators[profileEditButton.name].unlockButton();
-  // unlockButton(popupEditUser, config.submitButtonSelector, config.inactiveButtonClass);
+  FormValidators[popupEditUser.name].unlockButton();
   openPopup(popupUser);
 });
 
@@ -144,8 +143,7 @@ profileCloseButton.addEventListener('click', function () {
 cardAddButton.addEventListener('click', function () {
   popupInputValueTitle.value = '';
   popupInputValueLink.value = '';
-  FormValidators[cardAddButton.name].lockButton();
-  lockButton(popupEditCard, configValidator.submitButtonSelector, configValidator.inactiveButtonClass);
+  FormValidators[popupEditCard.name].lockButton();
   removeErrors(popupCard);
   openPopup(popupCard);
 });
