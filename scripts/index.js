@@ -1,4 +1,5 @@
-import {initialCards, configValidator} from './Card.js';
+import {Card} from './Card.js';
+import {initialCards, configValidator} from './cards.js';
 import FormValidator from './FormValidator.js';
 
 // редактировать профиль
@@ -9,9 +10,9 @@ const imageCloseButton = document.querySelector('.popup__close_image');
 const cardAddButton = document.querySelector('.profile__add');
 const popupUser = document.querySelector('.popup_user');
 const popupCard = document.querySelector('.popup_card');
-const popupImage = document.querySelector('.popup_image');
-const popupImg = document.querySelector('.popup__img');
-const popupText = document.querySelector('.popup__text');
+export const popupImage = document.querySelector('.popup_image');
+export const popupImg = document.querySelector('.popup__img');
+export const popupText = document.querySelector('.popup__text');
 
 // Находим форму в DOM
 const popupEditUser = document.querySelector('.popup__form_user'); // Воспользуйтесь методом querySelector()
@@ -25,13 +26,13 @@ const popupInputValueLink = document.querySelector('.popup__input_value_link');
 const profileName = document.querySelector('.profile__name');
 const profileDescription = document.querySelector('.profile__description');
 
-const elementTemplate = document.getElementById('element-template').content;
+export const elementTemplate = document.getElementById('element-template').content;
 const elementsContainer = document.querySelector('.elements');
 
 const ESCAPE = 27;
 
 // функции
-const openPopup = (popupElement) => {
+export const openPopup = (popupElement) => {
   popupElement.classList.add('popup_opened');
   document.addEventListener('keydown', handlePressEscape);
   document.addEventListener('mousedown', closeOverlay);
@@ -69,41 +70,20 @@ const renderCard = (elementCard) => {
   elementsContainer.prepend(elementCard);
 }
 
-const createCard = ({name, link}) => {
-  const elementCard = elementTemplate.querySelector('.element').cloneNode(true);
-  const elementMaskgroup = elementCard.querySelector('.element__maskgroup');
-  const elementHeart = elementCard.querySelector('.element__heart');
-  const elementTrash = elementCard.querySelector('.element__trash');
-  const elementName = elementCard.querySelector('.element__name');
-  elementName.textContent = name;
-  elementMaskgroup.src = link;
-  elementMaskgroup.alt = `Фото ${name}`;
-  elementMaskgroup.addEventListener('click', openPreviewPopup);
-  elementHeart.addEventListener('click', clickHeart);
-  elementTrash.addEventListener('click', deleteCard);
-  return elementCard;
-}
+initialCards.forEach(item => {
+  const elementCard = new Card(item.name, item.link, 'element-template');
+  const elementCardCreat = elementCard.createCard();
+  renderCard(elementCardCreat);
+});
 
 const handleSubmitAddCardForm = (evt) => {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-  renderCard(createCard({name: popupInputValueTitle.value, link: popupInputValueLink.value}));
+  const elementCard = new Card(popupInputValueTitle.value, popupInputValueLink.value, 'element-template');
+  const elementCardCreat = elementCard.createCard();
+  // renderCard(createCard({name: popupInputValueTitle.value, link: popupInputValueLink.value}));
+  renderCard(elementCardCreat);
   evt.target.reset();
   closePopup(popupCard);
-}
-
-const openPreviewPopup = (evt) => {
-  popupImg.src = evt.target.src;
-  popupImg.alt = evt.target.alt;
-  popupText.textContent = evt.target.alt.substr(5);
-  openPopup(popupImage);
-}
-
-const deleteCard = (evt) => {
-  evt.target.closest('.element').remove();
-}
-
-const clickHeart = (evt) => {
-  evt.target.classList.toggle('element__heart_active');
 }
 
 const removeErrors = (formElement) => {
@@ -159,6 +139,4 @@ imageCloseButton.addEventListener('click', function () {
 popupEditUser.addEventListener('submit', handleSubmitEditProfileForm);
 
 popupEditCard.addEventListener('submit', handleSubmitAddCardForm);
-
-initialCards.forEach(elementCard => {renderCard(createCard(elementCard))});
 

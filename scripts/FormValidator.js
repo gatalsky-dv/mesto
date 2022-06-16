@@ -45,13 +45,13 @@ export class FormValidator {
   // Функция принимает массив полей ввода
   // и элемент кнопки, состояние которой нужно менять
   _toggleButtonState(inputList) {
-    // 
     if (this._hasInvalidInput(inputList)) {
-      console.log('че тут?');
-      // console.log(lockButton);
-      lockButton();
+      
+      console.log('тоглБаттонСтэйт', this._hasInvalidInput(inputList));
+      this.lockButton;
     } else {
-      unlockButton();
+      console.log('тоглБаттонСтэйт', this._hasInvalidInput(inputList));
+      unlockButton(inputList);
     }
   }
 
@@ -61,25 +61,26 @@ export class FormValidator {
       inputElement.addEventListener('input', () => {
         this._checkInputValidity(inputElement);
         // (inputList, formElement, config.submitButtonSelector, config.inactiveButtonClass); popup__button_disabled
+        console.log('че тут?');
         this._toggleButtonState(inputList);
       });
     });
-    // this._toggleButtonState(inputList, formElement, saveButton, inactiveButton);
+    // this._toggleButtonState(inputList);
   }
 
   lockButton = () => {
-    const lockSaveButton = this._formElement.querySelector(this._submitButtonSelector);
-    console.log('первый- ', lockSaveButton.disabled);
-    lockSaveButton.disabled = true;
-    lockSaveButton.classList.add(this._inactiveButtonClass);
+    this._lockSaveButton = this._formElement.querySelector(this._submitButtonSelector);
+    console.log('первый- ', this._formElement);
+    this._lockSaveButton.disabled = true;
+    this._lockSaveButton.classList.add(this._inactiveButtonClass);
   }
   
   unlockButton = () => {
-    const unlockSaveButton = this._formElement.querySelector(this._submitButtonSelector);
+    this._unlockSaveButton = this._formElement.querySelector(this._submitButtonSelector);
     console.log('второй- ', unlockSaveButton.disabled);
-    unlockSaveButton.disabledSelector = false;
-    unlockSaveButton.disabled = false;
-    unlockSaveButton.classList.remove(this._inactiveButtonClass);
+    this._unlockSaveButton.disabledSelector = false;
+    this._unlockSaveButton.disabled = false;
+    this._unlockSaveButton.classList.remove(this._inactiveButtonClass);
   }
 
 }
