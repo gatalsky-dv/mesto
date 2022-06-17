@@ -45,14 +45,7 @@ export class FormValidator {
   // Функция принимает массив полей ввода
   // и элемент кнопки, состояние которой нужно менять
   _toggleButtonState(inputList) {
-    if (this._hasInvalidInput(inputList)) {
-      
-      console.log('тоглБаттонСтэйт', this._hasInvalidInput(inputList));
-      this.lockButton;
-    } else {
-      console.log('тоглБаттонСтэйт', this._hasInvalidInput(inputList));
-      unlockButton(inputList);
-    }
+    this._hasInvalidInput(inputList) ? this.lockButton() : this.unlockButton();
   }
 
   enableValidation() {
@@ -60,24 +53,19 @@ export class FormValidator {
     inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         this._checkInputValidity(inputElement);
-        // (inputList, formElement, config.submitButtonSelector, config.inactiveButtonClass); popup__button_disabled
-        console.log('че тут?');
         this._toggleButtonState(inputList);
       });
     });
-    // this._toggleButtonState(inputList);
   }
 
-  lockButton = () => {
+  lockButton() {
     this._lockSaveButton = this._formElement.querySelector(this._submitButtonSelector);
-    console.log('первый- ', this._formElement);
     this._lockSaveButton.disabled = true;
     this._lockSaveButton.classList.add(this._inactiveButtonClass);
   }
   
-  unlockButton = () => {
+  unlockButton() {
     this._unlockSaveButton = this._formElement.querySelector(this._submitButtonSelector);
-    console.log('второй- ', unlockSaveButton.disabled);
     this._unlockSaveButton.disabledSelector = false;
     this._unlockSaveButton.disabled = false;
     this._unlockSaveButton.classList.remove(this._inactiveButtonClass);

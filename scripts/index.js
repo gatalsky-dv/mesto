@@ -80,7 +80,6 @@ const handleSubmitAddCardForm = (evt) => {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   const elementCard = new Card(popupInputValueTitle.value, popupInputValueLink.value, 'element-template');
   const elementCardCreat = elementCard.createCard();
-  // renderCard(createCard({name: popupInputValueTitle.value, link: popupInputValueLink.value}));
   renderCard(elementCardCreat);
   evt.target.reset();
   closePopup(popupCard);
@@ -110,7 +109,6 @@ Array.from(document.forms).forEach((formElement) => {
 profileEditButton.addEventListener('click', function () {
   popupInputValueName.value = profileName.textContent;
   popupInputValueJob.value = profileDescription.textContent;
-  
   removeErrors(popupUser);
   FormValidators[popupEditUser.name].unlockButton();
   openPopup(popupUser);
