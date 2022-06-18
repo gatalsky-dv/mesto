@@ -8,7 +8,6 @@ export class FormValidator {
     this._formElement = formElement;
   }
 
-  // Функция, которая добавляет класс с ошибкой
   _showInputError = (inputElement, errorMessage) => {
     const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
     errorElement.textContent = errorMessage;
@@ -16,16 +15,13 @@ export class FormValidator {
     inputElement.classList.add(this._inputErrorClass);
   }
   
-  // Функция, которая удаляет класс с ошибкой 
   _hideInputError = (inputElement) => {
     const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
     errorElement.textContent = '';
     errorElement.classList.remove(this._errorClass);
-    // Очистим ошибку
     inputElement.classList.remove(this._inputErrorClass);
   }
 
-// Функция, которая проверяет валидность поля
   _checkInputValidity(inputElement) {
     if (!inputElement.validity.valid) {
       const errorMessage = inputElement.validationMessage;
@@ -35,15 +31,12 @@ export class FormValidator {
     }
   }
 
-  // Функция принимает массив полей
   _hasInvalidInput(inputList) {
     return inputList.some((inputElement) => {
       return !inputElement.validity.valid;
     });
   }
 
-  // Функция принимает массив полей ввода
-  // и элемент кнопки, состояние которой нужно менять
   _toggleButtonState(inputList) {
     this._hasInvalidInput(inputList) ? this.lockButton() : this.unlockButton();
   }

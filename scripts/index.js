@@ -10,8 +10,8 @@ const imageCloseButton = document.querySelector('.popup__close_image');
 const cardAddButton = document.querySelector('.profile__add');
 const popupUser = document.querySelector('.popup_user');
 const popupCard = document.querySelector('.popup_card');
-export const popupImage = document.querySelector('.popup_image');
-export const popupImg = document.querySelector('.popup__img');
+export const popupWithImage = document.querySelector('.popup_image');
+export const popupImage = document.querySelector('.popup__img');
 export const popupText = document.querySelector('.popup__text');
 
 // Находим форму в DOM
@@ -26,7 +26,6 @@ const popupInputValueLink = document.querySelector('.popup__input_value_link');
 const profileName = document.querySelector('.profile__name');
 const profileDescription = document.querySelector('.profile__description');
 
-export const elementTemplate = document.getElementById('element-template').content;
 const elementsContainer = document.querySelector('.elements');
 
 const ESCAPE = 27;
@@ -131,7 +130,7 @@ cardCloseButton.addEventListener('click', function () {
 });
 
 imageCloseButton.addEventListener('click', function () {
-  closePopup(popupImage);
+  closePopup(popupWithImage);
 });
 
 popupEditUser.addEventListener('submit', handleSubmitEditProfileForm);
