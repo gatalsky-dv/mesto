@@ -39,7 +39,6 @@ export class Card {
 
   createCard() {
     this._elementCard = this._getTemplate();
-    console.log(this._elementCard);
     this._elementMaskgroup = this._elementCard.querySelector('.element__maskgroup');
     this._elementHeart = this._elementCard.querySelector('.element__heart');
     this._elementTrash = this._elementCard.querySelector('.element__trash');
