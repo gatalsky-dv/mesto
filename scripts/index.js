@@ -73,6 +73,7 @@ initialCards.forEach(item => {
   const elementCard = new Card(item.name, item.link, 'element-template');
   const elementCardCreat = elementCard.createCard();
   renderCard(elementCardCreat);
+
 });
 
 const handleSubmitAddCardForm = (evt) => {
@@ -84,17 +85,17 @@ const handleSubmitAddCardForm = (evt) => {
   closePopup(popupCard);
 }
 
-const removeErrors = (formElement) => {
-  const inputArray = Array.from(formElement.querySelectorAll('.popup__input'));
-  inputArray.forEach(removeSelectors);
-}
+// const removeErrors = (formElement) => { //тут поправить!!
+//   const inputArray = Array.from(formElement.querySelectorAll('.popup__input'));
+//   inputArray.forEach(removeSelectors);
+// }
 
-const removeSelectors = (inputElement) => {
-  inputElement.classList.remove('popup__input_type_error');
-  const errorElement = document.querySelector(`.${inputElement.id}-error`);
-  errorElement.textContent = '';
-  errorElement.classList.remove('popup__input_error_visible');
-}
+// const removeSelectors = (inputElement) => { //тут поправить!!
+//   inputElement.classList.remove('popup__input_type_error');
+//   const errorElement = document.querySelector(`.${inputElement.id}-error`);
+//   errorElement.textContent = '';
+//   errorElement.classList.remove('popup__input_error_visible');
+// }
 
 const FormValidators = {}
 
@@ -108,7 +109,8 @@ Array.from(document.forms).forEach((formElement) => {
 profileEditButton.addEventListener('click', function () {
   popupInputValueName.value = profileName.textContent;
   popupInputValueJob.value = profileDescription.textContent;
-  removeErrors(popupUser);
+  // removeErrors();
+  FormValidators[popupEditUser.name].removeErrors();
   FormValidators[popupEditUser.name].unlockButton();
   openPopup(popupUser);
 });
@@ -120,8 +122,9 @@ profileCloseButton.addEventListener('click', function () {
 cardAddButton.addEventListener('click', function () {
   popupInputValueTitle.value = '';
   popupInputValueLink.value = '';
+  FormValidators[popupEditUser.name].removeErrors();
   FormValidators[popupEditCard.name].lockButton();
-  removeErrors(popupCard);
+  // removeErrors();
   openPopup(popupCard);
 });
 
