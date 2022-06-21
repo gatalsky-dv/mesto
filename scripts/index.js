@@ -10,8 +10,8 @@ const imageCloseButton = document.querySelector('.popup__close_image');
 const cardAddButton = document.querySelector('.profile__add');
 const popupUser = document.querySelector('.popup_user');
 const popupCard = document.querySelector('.popup_card');
-export const popupImage = document.querySelector('.popup_image');
-export const popupImg = document.querySelector('.popup__img');
+export const popupWithImage = document.querySelector('.popup_image');
+export const popupImage = document.querySelector('.popup__img');
 export const popupText = document.querySelector('.popup__text');
 
 // Находим форму в DOM
@@ -26,7 +26,6 @@ const popupInputValueLink = document.querySelector('.popup__input_value_link');
 const profileName = document.querySelector('.profile__name');
 const profileDescription = document.querySelector('.profile__description');
 
-export const elementTemplate = document.getElementById('element-template').content;
 const elementsContainer = document.querySelector('.elements');
 
 const ESCAPE = 27;
@@ -70,31 +69,19 @@ const renderCard = (elementCard) => {
   elementsContainer.prepend(elementCard);
 }
 
+const createCard = (name, link, template) => {
+  return new Card(name, link, template).createCard();
+}
+
 initialCards.forEach(item => {
-  const elementCard = new Card(item.name, item.link, 'element-template');
-  const elementCardCreat = elementCard.createCard();
-  renderCard(elementCardCreat);
+  renderCard(createCard(item.name, item.link, 'element-template'));
 });
 
 const handleSubmitAddCardForm = (evt) => {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-  const elementCard = new Card(popupInputValueTitle.value, popupInputValueLink.value, 'element-template');
-  const elementCardCreat = elementCard.createCard();
-  renderCard(elementCardCreat);
+  renderCard(createCard(popupInputValueTitle.value, popupInputValueLink.value, 'element-template'));
   evt.target.reset();
   closePopup(popupCard);
-}
-
-const removeErrors = (formElement) => {
-  const inputArray = Array.from(formElement.querySelectorAll('.popup__input'));
-  inputArray.forEach(removeSelectors);
-}
-
-const removeSelectors = (inputElement) => {
-  inputElement.classList.remove('popup__input_type_error');
-  const errorElement = document.querySelector(`.${inputElement.id}-error`);
-  errorElement.textContent = '';
-  errorElement.classList.remove('popup__input_error_visible');
 }
 
 const FormValidators = {}
@@ -109,7 +96,7 @@ Array.from(document.forms).forEach((formElement) => {
 profileEditButton.addEventListener('click', function () {
   popupInputValueName.value = profileName.textContent;
   popupInputValueJob.value = profileDescription.textContent;
-  removeErrors(popupUser);
+  FormValidators[popupEditUser.name].removeErrors();
   FormValidators[popupEditUser.name].unlockButton();
   openPopup(popupUser);
 });
@@ -121,8 +108,8 @@ profileCloseButton.addEventListener('click', function () {
 cardAddButton.addEventListener('click', function () {
   popupInputValueTitle.value = '';
   popupInputValueLink.value = '';
+  FormValidators[popupEditCard.name].removeErrors();
   FormValidators[popupEditCard.name].lockButton();
-  removeErrors(popupCard);
   openPopup(popupCard);
 });
 
@@ -131,7 +118,7 @@ cardCloseButton.addEventListener('click', function () {
 });
 
 imageCloseButton.addEventListener('click', function () {
-  closePopup(popupImage);
+  closePopup(popupWithImage);
 });
 
 popupEditUser.addEventListener('submit', handleSubmitEditProfileForm);
