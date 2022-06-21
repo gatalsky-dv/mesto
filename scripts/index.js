@@ -69,33 +69,20 @@ const renderCard = (elementCard) => {
   elementsContainer.prepend(elementCard);
 }
 
-initialCards.forEach(item => {
-  const elementCard = new Card(item.name, item.link, 'element-template');
-  const elementCardCreat = elementCard.createCard();
-  renderCard(elementCardCreat);
+const createCard = (name, link, template) => {
+  return new Card(name, link, template).createCard();
+}
 
+initialCards.forEach(item => {
+  renderCard(createCard(item.name, item.link, 'element-template'));
 });
 
 const handleSubmitAddCardForm = (evt) => {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-  const elementCard = new Card(popupInputValueTitle.value, popupInputValueLink.value, 'element-template');
-  const elementCardCreat = elementCard.createCard();
-  renderCard(elementCardCreat);
+  renderCard(createCard(popupInputValueTitle.value, popupInputValueLink.value, 'element-template'));
   evt.target.reset();
   closePopup(popupCard);
 }
-
-// const removeErrors = (formElement) => { //тут поправить!!
-//   const inputArray = Array.from(formElement.querySelectorAll('.popup__input'));
-//   inputArray.forEach(removeSelectors);
-// }
-
-// const removeSelectors = (inputElement) => { //тут поправить!!
-//   inputElement.classList.remove('popup__input_type_error');
-//   const errorElement = document.querySelector(`.${inputElement.id}-error`);
-//   errorElement.textContent = '';
-//   errorElement.classList.remove('popup__input_error_visible');
-// }
 
 const FormValidators = {}
 
@@ -109,7 +96,6 @@ Array.from(document.forms).forEach((formElement) => {
 profileEditButton.addEventListener('click', function () {
   popupInputValueName.value = profileName.textContent;
   popupInputValueJob.value = profileDescription.textContent;
-  // removeErrors();
   FormValidators[popupEditUser.name].removeErrors();
   FormValidators[popupEditUser.name].unlockButton();
   openPopup(popupUser);
@@ -122,9 +108,8 @@ profileCloseButton.addEventListener('click', function () {
 cardAddButton.addEventListener('click', function () {
   popupInputValueTitle.value = '';
   popupInputValueLink.value = '';
-  FormValidators[popupEditUser.name].removeErrors();
+  FormValidators[popupEditCard.name].removeErrors();
   FormValidators[popupEditCard.name].lockButton();
-  // removeErrors();
   openPopup(popupCard);
 });
 

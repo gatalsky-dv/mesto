@@ -10,24 +10,16 @@ export class FormValidator {
   }
 
   _showInputError(inputElement, errorMessage) {
-    console.log('добавляем формЭлемент - ', this._formElement);
-    // console.log('добавляем раз', this._formElement.querySelector(`.${inputElement.id}-error`));
     const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
     errorElement.textContent = errorMessage;
-    // console.log('добавляем три', this._errorClass);
     errorElement.classList.add(this._errorClass);
-    // console.log('добавляем четыре', this._inputErrorClass);
     inputElement.classList.add(this._inputErrorClass);
   }
   
   _hideInputError(inputElement) {
-    console.log('формЭлемент - ', this._formElement);
-    // console.log('удаляем раз', this._formElement.querySelector(`.${inputElement.id}-error`));
     const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
     errorElement.textContent = '';
-    // console.log('удаляем три', this._errorClass);
     errorElement.classList.remove(this._errorClass);
-    // console.log('удаляем четыре', this._inputErrorClass);
     inputElement.classList.remove(this._inputErrorClass);
   }
 
@@ -72,39 +64,11 @@ export class FormValidator {
     this._unlockSaveButton.classList.remove(this._inactiveButtonClass);
   }
 
-  // removeSelectors() {
-  //   console.log('ну и хули?', this._inputElement);
-  //   this._errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
-
-  //   this._errorElement.textContent = '';
-  //   this._errorElement.classList.remove(this._errorClass);
-  //   this._inputElement.classList.remove(this._inputErrorClass);
-  // }
-  
   removeErrors() {
-    // console.log('тут инпутЛист', this._inputList);
-    // console.log('удаляем че-то', this._hideInputError);
-    // console.log(inputElement);
-    // this._hideInputError;
     this._inputList.forEach((inputElement) => {
-      console.log('1');
       this._hideInputError(inputElement);
     });
   }
-
-
-
-  // const removeErrors = (formElement) => { //тут поправить!!
-//   const inputArray = Array.from(formElement.querySelectorAll('.popup__input'));
-//   inputArray.forEach(removeSelectors);
-// }
-
-// const removeSelectors = (inputElement) => { //тут поправить!!
-//   inputElement.classList.remove('popup__input_type_error');
-//   const errorElement = document.querySelector(`.${inputElement.id}-error`);
-//   errorElement.textContent = '';
-//   errorElement.classList.remove('popup__input_error_visible');
-// }
 
 }
 

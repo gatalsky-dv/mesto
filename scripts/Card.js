@@ -47,13 +47,6 @@ export class Card {
     this._elementName.textContent = this._name;
     this._elementMaskgroup.src = this._link;
     this._elementMaskgroup.alt = `Фото ${this._name}`;
-
-    // this._cardItem = Card(popupInputValueTitle.value, popupInputValueLink.value, 'element-template');
-
-    // // const elementCard = new Card(popupInputValueTitle.value, popupInputValueLink.value, 'element-template');
-    // console.log('что тут НАХ?', this._cardItem);
-    // // const elementCardCreat = elementCard.createCard();
-
     return this._elementCard;
   }
 }
