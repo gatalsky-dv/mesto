@@ -1,25 +1,30 @@
-import {openPopup, popupImage, popupImg, popupText} from './index.js';
+import {openPopup, popupWithImage, popupImage, popupText} from './index.js';
 
 export class Card {
-  constructor(name, link, templateContent) {
+  constructor(name, link, templateSelector) {
     this._name = name;
     this._link = link;
-    this._templateContent = templateContent;
+    this._templateSelector = templateSelector;
   }
 
   _getTemplate() {
-    return document.getElementById('element-template').content.querySelector('.element').cloneNode(true);
+    return document
+    .getElementById(this._templateSelector)
+    .content
+    .querySelector('.element')
+    .cloneNode(true);
   }
 
   _openPreviewPopup() {
-    popupImg.src = this._link;;
-    popupImg.alt = this._name;
+    popupImage.src = this._link;;
+    popupImage.alt = this._name;
     popupText.textContent = `Фото ${this._name}`;
-    openPopup(popupImage);
+    openPopup(popupWithImage);
   }
 
   _deleteCard() {
     this._elementCard.remove();
+    this._elementCard = null;
   }
   
   _clickHeart() {
