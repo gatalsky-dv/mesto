@@ -4,30 +4,28 @@ import FormValidator from './FormValidator.js';
 
 // редактировать профиль
 const profileEditButton = document.querySelector('.profile__edit');
-const profileCloseButton = document.querySelector('.popup__close_user');
-const cardCloseButton = document.querySelector('.popup__close_card');
-const imageCloseButton = document.querySelector('.popup__close_image');
 const cardAddButton = document.querySelector('.profile__add');
 const popupUser = document.querySelector('.popup_user');
 const popupCard = document.querySelector('.popup_card');
 export const popupWithImage = document.querySelector('.popup_image');
-export const popupImage = document.querySelector('.popup__img');
-export const popupText = document.querySelector('.popup__text');
+const profileCloseButton = popupUser.querySelector('.popup__close_user');
+const cardCloseButton = popupCard.querySelector('.popup__close_card');
+const imageCloseButton = popupWithImage.querySelector('.popup__close_image');
+export const popupImage = popupWithImage.querySelector('.popup__img');
+export const popupText = popupWithImage.querySelector('.popup__text');
 
 // Находим форму в DOM
 const popupEditUser = document.querySelector('.popup__form_user'); // Воспользуйтесь методом querySelector()
 const popupEditCard = document.querySelector('.popup__form_card');
 // Находим поля формы в DOM
-const popupInputValueName = document.querySelector('.popup__input_value_name');
-const popupInputValueJob = document.querySelector('.popup__input_value_job');
-const popupInputValueTitle = document.querySelector('.popup__input_value_title');
-const popupInputValueLink = document.querySelector('.popup__input_value_link');
+const popupInputValueName = popupEditUser.querySelector('.popup__input_value_name');
+const popupInputValueJob = popupEditUser.querySelector('.popup__input_value_job');
+const popupInputValueTitle = popupEditCard.querySelector('.popup__input_value_title');
+const popupInputValueLink = popupEditCard.querySelector('.popup__input_value_link');
 
 const profileName = document.querySelector('.profile__name');
 const profileDescription = document.querySelector('.profile__description');
-
 const elementsContainer = document.querySelector('.elements');
-
 const popupList = document.querySelectorAll('.popup');
 
 const ESCAPE = 27;
@@ -110,8 +108,9 @@ profileCloseButton.addEventListener('click', function () {
 });
 
 cardAddButton.addEventListener('click', function () {
-  popupInputValueTitle.value = '';
-  popupInputValueLink.value = '';
+  popupEditCard.reset();
+  // popupInputValueTitle.value = '';
+  // popupInputValueLink.value = '';
   FormValidators[popupEditCard.name].removeErrors();
   FormValidators[popupEditCard.name].lockButton();
   openPopup(popupCard);
