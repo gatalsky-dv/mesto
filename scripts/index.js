@@ -28,32 +28,20 @@ const profileDescription = document.querySelector('.profile__description');
 
 const elementsContainer = document.querySelector('.elements');
 
-const popupArray = Array.from(document.querySelectorAll('.popup'));
-console.log(popupArray);
+const popupList = document.querySelectorAll('.popup');
 
 const ESCAPE = 27;
 
 // функции
 
-const listenerPopup = (popupElement) => {
-  const popup = document.querySelectorAll('.popup');
-
-}
-
 export const openPopup = (popupElement) => {
   popupElement.classList.add('popup_opened');
   document.addEventListener('keydown', handlePressEscape);
-  // popupElement.addEventListener('mousedown', closeOverlay);
-}
-
-const popupik = (popupElement) => {
-  popupElement.addEventListener('mousedown', closeOverlay);
 }
 
 const closePopup = (popupElement) => {
   popupElement.classList.remove('popup_opened');
   document.removeEventListener('keydown', handlePressEscape);
-  // document.removeEventListener('mousedown', closeOverlay);
 }
 
 const handlePressEscape = (evt) => {
@@ -64,7 +52,6 @@ const handlePressEscape = (evt) => {
 }
 
 const closeOverlay = (evt) => {
-  // const openedPopupMousedown = document.querySelector('.popup_opened');
   if (evt.target === evt.currentTarget){
     closePopup(evt.currentTarget);
   }
@@ -96,6 +83,10 @@ const handleSubmitAddCardForm = (evt) => {
   evt.target.reset();
   closePopup(popupCard);
 }
+
+popupList.forEach(popupElement => {
+  popupElement.addEventListener('mousedown', closeOverlay);
+});
 
 const FormValidators = {}
 
