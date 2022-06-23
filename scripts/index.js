@@ -109,8 +109,6 @@ profileCloseButton.addEventListener('click', function () {
 
 cardAddButton.addEventListener('click', function () {
   popupEditCard.reset();
-  // popupInputValueTitle.value = '';
-  // popupInputValueLink.value = '';
   FormValidators[popupEditCard.name].removeErrors();
   FormValidators[popupEditCard.name].lockButton();
   openPopup(popupCard);
