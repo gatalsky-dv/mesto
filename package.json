@@ -1,0 +1,19 @@
+{
+  "name": "mesto",
+  "version": "0.0.1",
+  "description": "* Проект для закрепления навыков верстки + начало изучения js. Данная работа - это первая честь из 3 работ по изучению js.\r * В данной работе применяются: флекс, грид, js.\r * Выполнена вторая часть из 3. \r * Закрепление навыков добавления/удаления элементов на страницу с помощью js.\r * Третья заключительная часть серии практических работ.\r * В работе используется валидация форм, обработка событий.\r * Рефакторинг проекта, создание классов Card и FormValidator.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gatalsky-dv/mesto.git"
+  },
+  "author": "Gatalsky Dmitry",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gatalsky-dv/mesto/issues"
+  },
+  "homepage": "https://github.com/gatalsky-dv/mesto#readme"
+}
