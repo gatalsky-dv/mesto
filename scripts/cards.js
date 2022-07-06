@@ -1,6 +1,6 @@
 export const profileEditButton = document.querySelector('.profile__edit');
 export const cardAddButton = document.querySelector('.profile__add');
-export const elementsContainer = document.querySelector('.elements');
+export const elementsContainer = '.elements';
 export const elementTemplate = document.getElementById('element-template');
 export const cardSelector = elementTemplate.content.querySelector('.element');
 
@@ -32,7 +32,7 @@ export const initialCards = [
   }
 ];
 
-const reverseCards = initialCards.reverse();
+// const reverseCards = initialCards.reverse();
 
 export const configValidator = {
   inputSelector: '.popup__input',

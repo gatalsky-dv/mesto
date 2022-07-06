@@ -3,15 +3,23 @@ export default class UserInfo {
     this._titleSelector = titleSelector;
     this._descriptionSelector = descriptionSelector;
     this._titleElement = document.querySelector(this._titleSelector);
+    console.dir(this._titleElement);
     this._descriptionElement = document.querySelector(this._descriptionSelector);
+
+    console.dir(this._descriptionElement);
   }
 
-  getUserInfo() {
-    return {title: this._titleElement.textContent, description: this._descriptionElement.textContent};
+  getUserInfo = () => {
+    return {user: this._titleElement.textContent, job: this._descriptionElement.textContent};
   }
 
-  setUserInfo(data) {
-    this._titleElement.textContent = data?.title || '';
-    this._descriptionElement.textContent = data?.description || '';
+  setUserInfo = (data) => {
+    console.dir(data);
+    console.log('data.user', data.user);
+    this._titleElement.textContent = [data.user];
+    console.log("this._titleElement.textContent: ", this._titleElement.textContent);
+    this._descriptionElement.textContent = data.job;
+    console.log("this._descriptionElement.textContent: ", this._descriptionElement.textContent);
+    debugger;
   }
 }

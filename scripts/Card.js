@@ -1,20 +1,13 @@
 export default class Card {
-  constructor(name, link, cardSelector, handleCardClick) {
-    console.log('тут cardSelector:', cardSelector);
-    console.log('тут handleCardClick:', handleCardClick);
-    this._name = name;
-    this._link = link;
+  constructor({item}, cardSelector, handleCardClick) {
+    this._name = item.name;
+    this._link = item.link;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
     return this._cardSelector.cloneNode(true);
-    
-  }
-
-  _handleCardClick() {
-    this._cardSelector({name: this._name, link: this._link});
   }
 
   _deleteCard() {
@@ -27,7 +20,9 @@ export default class Card {
   }
 
   _setEventListeners() {
-    this._elementMaskgroup.addEventListener('click', () => this._handleCardClick());
+    this._elementMaskgroup.addEventListener('click', () => {
+      this._handleCardClick.open(this._name, this._link);
+    });
     this._elementHeart.addEventListener('click', () => this._clickHeart());
     this._elementTrash.addEventListener('click', () => this._deleteCard());
   }
