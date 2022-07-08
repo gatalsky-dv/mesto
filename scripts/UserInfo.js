@@ -3,23 +3,18 @@ export default class UserInfo {
     this._titleSelector = titleSelector;
     this._descriptionSelector = descriptionSelector;
     this._titleElement = document.querySelector(this._titleSelector);
-    console.dir(this._titleElement);
     this._descriptionElement = document.querySelector(this._descriptionSelector);
-
-    console.dir(this._descriptionElement);
+    this._profileData = {};
   }
 
   getUserInfo = () => {
-    return {user: this._titleElement.textContent, job: this._descriptionElement.textContent};
+    this._profileData['user'] = this._titleElement.textContent;
+    this._profileData['job'] = this._descriptionElement.textContent;
+    return this._profileData;
   }
 
   setUserInfo = (data) => {
-    console.dir(data);
-    console.log('data.user', data.user);
-    this._titleElement.textContent = [data.user];
-    console.log("this._titleElement.textContent: ", this._titleElement.textContent);
-    this._descriptionElement.textContent = data.job;
-    console.log("this._descriptionElement.textContent: ", this._descriptionElement.textContent);
-    debugger;
+    this._titleElement.textContent = data['user'];
+    this._descriptionElement.textContent = data['job'];
   }
 }

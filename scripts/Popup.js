@@ -16,7 +16,7 @@ export default class Popup {
     }
   }
 
-  setEventListeners = () => {
+  setEventListeners() {
     const popupCloseButton = this._popupElement.querySelector('.popup__close');
     popupCloseButton.addEventListener('click', () => this.close());
     this._popupElement.addEventListener('mousedown', this._handleOverlayClose);

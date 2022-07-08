@@ -18,14 +18,14 @@ import {
 // редактировать профиль
 // const profileEditButton = document.querySelector('.profile__edit');
 // const cardAddButton = document.querySelector('.profile__add');
-const popupUser = document.querySelector('.popup_user');
-const popupCard = document.querySelector('.popup_card');
-export const popupWithImage = document.querySelector('.popup_image');
-const profileCloseButton = popupUser.querySelector('.popup__close_user');
-const cardCloseButton = popupCard.querySelector('.popup__close_card');
-const imageCloseButton = popupWithImage.querySelector('.popup__close_image');
-export const popupImage = popupWithImage.querySelector('.popup__img');
-export const popupText = popupWithImage.querySelector('.popup__text');
+// const popupUser = document.querySelector('.popup_user');
+// const popupCard = document.querySelector('.popup_card');
+// export const popupWithImage = document.querySelector('.popup_image');
+// const profileCloseButton = popupUser.querySelector('.popup__close_user');
+// const cardCloseButton = popupCard.querySelector('.popup__close_card');
+// const imageCloseButton = popupWithImage.querySelector('.popup__close_image');
+// export const popupImage = popupWithImage.querySelector('.popup__img');
+// export const popupText = popupWithImage.querySelector('.popup__text');
 
 // Находим форму в DOM
 const popupEditUser = document.querySelector('.popup__form_user'); // Воспользуйтесь методом querySelector()
@@ -52,28 +52,34 @@ Array.from(document.forms).forEach((formElement) => {
   FormValidators[formElement.name].enableValidation();
 });
 
-const handleSubmitEditProfileForm = (input) => {
-  userInfo.setUserInfo(input);
+const handleSubmitEditProfileForm = (data) => {
+  userInfo.setUserInfo(data);
 }
 
-const handleSubmitAddCardForm = (input) => {
+const handleSubmitAddCardForm = (data) => {
+  console.dir(data);
   const newCard = {
-    title: this._titleElement.textContent, 
-    description: this._descriptionElement.textContent,
+    title: data['title'], 
+    description: data['link'],
   }
-
+  console.log('title #1: ', data['title']);
+  console.log('link #2: ', data['link']);
+  const cardElement = createCard(data, elementTemplate, popupWithImgOpen.open);
+  console.log(cardElement);
+  cardsContainer.addItem(cardElement);
 }
 
-// const cardElement = createCard()
+
 
 const popupWithImgOpen = new PopupWithImage('.popup_image');
 popupWithImgOpen.setEventListeners();
 
 const popupEditProfile = new PopupWithForm('.popup_user', handleSubmitEditProfileForm);
-popupEditProfile.setEventListeners();
+// popupEditProfile.setEventListeners();
+
 
 const popupAddCard = new PopupWithForm('.popup_card', handleSubmitAddCardForm);
-popupAddCard.setEventListeners();
+// popupAddCard.setEventListeners();
 
 
 const createCard = (item) => {
@@ -88,13 +94,11 @@ const cardsContainer = new Section({
 
 cardsContainer.renderItems();
 
-const handleCardSubmit = (item) => {
-  cardsContainer.addItem(item);
-}
-
+// const handleCardSubmit = (item) => {
+//   cardsContainer.addItem(item);
+// }
 
 const userInfo = new UserInfo('.profile__name', '.profile__description');
-
 
 // обработчики
 
@@ -104,29 +108,15 @@ profileEditButton.addEventListener('click', () => {
   FormValidators[popupEditUser.name].unlockButton();
   const profileInfo = userInfo.getUserInfo();
   popupEditProfile.setInputValues(profileInfo);
- 
   popupEditProfile.open();
 });
 
-// profileCloseButton.addEventListener('click', function () {
-//   closePopup(popupUser);
-// });
 
-cardAddButton.addEventListener('click', function () {
-  popupEditCard.reset();
+cardAddButton.addEventListener('click', () => {
   FormValidators[popupEditCard.name].removeErrors();
   FormValidators[popupEditCard.name].lockButton();
-
+  popupAddCard.open();
 });
 
-// cardCloseButton.addEventListener('click', function () {
-//   closePopup(popupCard);
-// });
 
-// imageCloseButton.addEventListener('click', function () {
-//   closePopup(popupWithImage);
-// });
-
-popupEditUser.addEventListener('submit', handleSubmitEditProfileForm);
-
-popupEditCard.addEventListener('submit', handleSubmitAddCardForm);
+// popupEditCard.addEventListener('submit', handleSubmitAddCardForm);
