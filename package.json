@@ -1,10 +1,11 @@
 {
-  "name": "mesto",
+  "name": "yandex_praktikum",
   "version": "0.0.1",
   "description": "* Проект для закрепления навыков верстки + начало изучения js. Данная работа - это первая честь из 3 работ по изучению js.\r * В данной работе применяются: флекс, грид, js.\r * Выполнена вторая часть из 3. \r * Закрепление навыков добавления/удаления элементов на страницу с помощью js.\r * Третья заключительная часть серии практических работ.\r * В работе используется валидация форм, обработка событий.\r * Рефакторинг проекта, создание классов Card и FormValidator.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack --mode production",
+    "dev": "webpack serve"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,24 @@
   "bugs": {
     "url": "https://github.com/gatalsky-dv/mesto/issues"
   },
-  "homepage": "https://github.com/gatalsky-dv/mesto#readme"
+  "homepage": "https://github.com/gatalsky-dv/mesto#readme",
+  "dependencies": {
+    "core-js": "^3.23.3",
+    "jquery": "^3.6.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.6",
+    "@babel/preset-env": "^7.18.6",
+    "autoprefixer": "^10.4.7",
+    "babel-loader": "^8.2.5",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.7.1",
+    "cssnano": "^5.1.12",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.6.1",
+    "postcss-loader": "^7.0.0",
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.9.3"
+  }
 }
