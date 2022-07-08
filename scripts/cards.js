@@ -1,8 +1,9 @@
 export const profileEditButton = document.querySelector('.profile__edit');
 export const cardAddButton = document.querySelector('.profile__add');
 export const elementsContainer = '.elements';
-export const elementTemplate = document.getElementById('element-template');
-export const cardSelector = elementTemplate.content.querySelector('.element');
+export const cardSelector = document.getElementById('element-template').content.querySelector('.element');
+export const popupEditUser = document.querySelector('.popup__form_user');
+export const popupEditCard = document.querySelector('.popup__form_card');
 
 
 export const initialCards = [
@@ -31,8 +32,6 @@ export const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
-
-// const reverseCards = initialCards.reverse();
 
 export const configValidator = {
   inputSelector: '.popup__input',
