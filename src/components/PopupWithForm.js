@@ -7,7 +7,6 @@ export default class PopupWithForm extends Popup {
     this._popupForm = this._popupElement.querySelector('.popup__form');
     this._popupInput = this._popupElement.querySelectorAll('.popup__input');
     this._inputValues = {};
-    this._setEventListeners();
   }
 
   _getInputValues = () => {
@@ -23,8 +22,8 @@ export default class PopupWithForm extends Popup {
     });
   }
 
-  _setEventListeners() {
-    this.setEventListeners();
+  setEventListeners() {
+    super.setEventListeners();
     this._popupForm.addEventListener('submit', (evt) => {
       evt.preventDefault();
       this._handleSubmitEditProfileForm(this._getInputValues());
