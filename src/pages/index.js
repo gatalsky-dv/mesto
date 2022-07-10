@@ -8,16 +8,13 @@ import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
 
 import {
-  initialCards,
-  configValidator,
-} from '../components/PicturePopup.js';
-
-import {
   profileEditButton,
   cardAddButton,
   elementsContainer,
   popupEditUser,
   popupEditCard,
+  initialCards,
+  configValidator,
 } from '../utils/constants.js';
 
 const formValidators = {}
