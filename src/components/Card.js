@@ -15,8 +15,13 @@ export default class Card {
   }
 
   _deleteCard() {
-    this._elementCard.remove();
-    this._elementCard = null;
+    console.log('123-321');
+    document.querySelector('.popup_confirm').classList.add('popup_opened');
+    document.addEventListener('keydown', this._handleEscClose);
+    // this._elementTrash.open();
+
+    // this._elementCard.remove();
+    // this._elementCard = null;
   }
   
   _clickHeart() {
@@ -28,7 +33,9 @@ export default class Card {
       this._handleCardClick.open(this._name, this._link);
     });
     this._elementHeart.addEventListener('click', () => this._clickHeart());
-    this._elementTrash.addEventListener('click', () => this._deleteCard());
+    this._elementTrash.addEventListener('click', () => {
+      this._deleteCard();
+    });
   }
 
   cardСreation() {

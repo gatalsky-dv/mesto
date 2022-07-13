@@ -37,6 +37,15 @@ const handleSubmitAddCardForm = (item) => {
   cardsContainer.addItem(createCard(item));
 }
 
+// const handleSubmitUpdateAvatarForm = (item) => {
+//   console.log('Аватарка');
+// }
+
+// const handleSubmitConfirm = (item) => {
+//   console.log('Удалить');
+// }
+
+
 const popupWithImgOpen = new PopupWithImage('.popup_image');
 popupWithImgOpen.setEventListeners();
 
@@ -45,6 +54,12 @@ popupEditProfile.setEventListeners();
 
 const popupAddCard = new PopupWithForm('.popup_card', handleSubmitAddCardForm);
 popupAddCard.setEventListeners();
+
+// const popupUpdateAvatar = new PopupWithForm('.popup_avatar', handleSubmitUpdateAvatarForm);
+// popupUpdateAvatar.setEventListeners();
+
+// const popupConfirm = new PopupWithForm('.popup_confirm', handleSubmitConfirm);
+// popupConfirm.setEventListeners();
 
 const userInfo = new UserInfo('.profile__name', '.profile__description');
 
