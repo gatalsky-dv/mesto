@@ -16,7 +16,7 @@ export default class Card {
 
   _deleteCard() {
     console.log('123-321');
-    document.querySelector('.popup_confirm').classList.add('popup_opened');
+    document.querySelector('.popup_confirm').classList.add('popup_opened');//тут остановился
     document.addEventListener('keydown', this._handleEscClose);
     // this._elementTrash.open();
 
