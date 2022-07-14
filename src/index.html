@@ -15,7 +15,10 @@
   <main class="content">
 
     <section class="profile">
-      <img src="<%=require('./images/Avatar.png')%>" alt="Аватарка" class="profile__avatar">
+      <div class="profile__avatar">
+        <button aria-label="Изменить" type="button" class=" profile__avatar_edit"></button>
+        <img src="<%=require('./images/Avatar.png')%>" alt="Аватарка" class="profile__avatar_image">
+      </div>
       <div class="profile__form"> 
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -144,6 +147,7 @@
       <div class="element__caption">
         <h2 class="element__name"></h2>
         <button type="button" class="element__heart"></button>
+        <p class="element__counter"></p>
       </div>
     </article>
   </template>
