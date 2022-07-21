@@ -16,7 +16,7 @@
 
     <section class="profile">
       <div class="profile__avatar">
-        <button aria-label="Изменить" type="button" class=" profile__avatar_edit"></button>
+        <!-- <button aria-label="Изменить" type="button" class="profile__avatar_edit"></button> -->
         <img src="<%=require('./images/Avatar.png')%>" alt="Аватарка" class="profile__avatar_image">
       </div>
       <div class="profile__form"> 
@@ -116,7 +116,7 @@
     <div class="popup__container popup__container_avatar">
       <button aria-label="Закрыть" type="button" class="popup__close popup__close_avatar"></button>
       <h3 class="popup__title">Обновить аватар</h3>
-      <form name="avatar" class="popup__form popup__form_avatar" novalidate>
+      <form name="avatar-edit" class="popup__form popup__form_avatar" novalidate>
         <input
           type="url"
           class="popup__input popup__input_value_link"
@@ -131,12 +131,12 @@
     </div>
   </div>
   <!-- пятый popup -->
-  <div class="popup popup_confirm">
-    <div class="popup__container popup__container_confirm">
-      <button aria-label="Закрыть" type="button" class="popup__close popup__close_confirm"></button>
-      <h3 class="popup__title popup__title_confirm">Вы уверены?</h3>
-      <form name="card-delete" class="popup__form popup__form_confirm" novalidate>
-        <button type="submit" class="popup__button popup__button_confirm">Да</button>
+  <div class="popup popup_confirmation">
+    <div class="popup__container popup__container_confirmation">
+      <button aria-label="Закрыть" type="button" class="popup__close popup__close_confirmation"></button>
+      <h3 class="popup__title popup__title_confirmation">Вы уверены?</h3>
+      <form name="card-delete" class="popup__form popup__form_confirmation" novalidate>
+        <button type="submit" class="popup__button popup__button_confirmation">Да</button>
       </form>
     </div>
   </div>

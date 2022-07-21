@@ -11,6 +11,7 @@
 * Рефакторинг проекта, создание классов Card и FormValidator.
 * Рефакторинг проекта, создание классов Section, Popup, PopupWithImage, PopupWithForm, UserInfo.
 * Настройка сборки Вебпаком.
+* Подключение проекта к серверу.
 
 Проект доступен по ссылке:
 https://gatalsky-dv.github.io/mesto/

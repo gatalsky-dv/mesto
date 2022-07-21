@@ -4,3 +4,7 @@
   height: 120px;
   display: flex;
 }
+
+.profile__avatar:hover {
+  background-image: url(../../../images/Edit_Avatar.svg);
+}

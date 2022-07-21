@@ -6,6 +6,8 @@ export default class PopupWithForm extends Popup {
     this._handleSubmitEditProfileForm = handleSubmitEditProfileForm;
     this._popupForm = this._popupElement.querySelector('.popup__form');
     this._popupInput = this._popupElement.querySelectorAll('.popup__input');
+    this._handleSubmitButton = this._popupElement.querySelector('.popup__button');
+    this._handleSubmitButtonText = 'Сохранение...';
     this._inputValues = {};
   }
 
@@ -14,6 +16,10 @@ export default class PopupWithForm extends Popup {
       this._inputValues[input.name] = input.value;
     });
     return this._inputValues;
+  }
+
+  toggleButtonText() {
+    [this._handleSubmitButton.textContent, this._handleSubmitButtonText] = [this._handleSubmitButtonText, this._handleSubmitButton.textContent]
   }
 
   setInputValues = (data) =>{
@@ -30,6 +36,8 @@ export default class PopupWithForm extends Popup {
       this.close();
     })
   }
+
+
 
   close = () => {
     super.close();

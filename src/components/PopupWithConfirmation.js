@@ -1,13 +1,21 @@
 import Popup from './Popup.js';
 
 export default class PopupWithConfirmation extends Popup {
-  constructor(popupSelector) {
+  constructor(popupSelector, deleteCard) {
     super(popupSelector);
-    this._imageElement = document.querySelector('.popup__img');
-    this._captionElement = document.querySelector('.popup__text');
+    this._deleteCard = deleteCard;
   }
 
-  open() {
-    super.open();
+  setEventListeners() {
+    super.setEventListeners();
+    this._popupElement.addEventListener('submit', (evt) => {
+      evt.preventDefault();
+      this._deleteCard(this._currentCard);
+      this.close();
+    })
+  }
+
+  setCurrentCard(currentCard) {
+  this._currentCard = currentCard;
   }
 }
