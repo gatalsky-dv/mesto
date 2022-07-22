@@ -126,20 +126,6 @@ const handleSubmitUpdateAvatarForm = ({ avatar: avatar }) => {
     })
 }
 
-const displayPage = () => {
-  Promise.all([
-    api.getUserInfo(),
-    api.getInitialCards(),
-  ])
-    .then(([{ name, about, avatar, _id }, data]) => {
-      userInfo.setUserInfo({ name, about, avatar, _id });
-      cardsContainer.renderItems(data, _id);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-}
-
 const popupWithImgOpen = new PopupWithImage('.popup_image');
 popupWithImgOpen.setEventListeners();
 
@@ -164,8 +150,6 @@ const cardsContainer = new Section({
   }
 });
 
-// cardsContainer.renderItems();
-
 profileEditButton.addEventListener('click', () => {
   formValidators[popupEditUser.name].removeErrors();
   formValidators[popupEditUser.name].unlockButton();
@@ -186,4 +170,15 @@ avatarEditButton.addEventListener('click', () => {
   popupUpdateAvatar.open();
 });
 
-displayPage();
+// const displayPage = () => {
+  Promise.all([ api.getUserInfo(), api.getInitialCards() ])
+    .then(([{ name, about, avatar, _id }, data]) => {
+      userInfo.setUserInfo({ name, about, avatar, _id });
+      cardsContainer.renderItems(data, _id);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+// }
+
+// displayPage();

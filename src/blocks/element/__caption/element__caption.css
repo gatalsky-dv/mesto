@@ -1,8 +1,9 @@
 .element__caption {
   margin: 25px 15px 22px 21px;
   display: flex;
-  flex-direction: row;
+  /* flex-direction: column; */
   justify-content: space-between;
+  align-items: center;
   max-width: 246px;
   min-height: 23px;
 }
