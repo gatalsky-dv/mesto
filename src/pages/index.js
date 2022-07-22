@@ -44,6 +44,7 @@ const deleteCard = (currentCard) => {
   api.deleteCard(cardId)
     .then(item => {
       currentCard.deleteCard();
+      popupWithConfirmation.close();
     })
     .catch(err => {
       console.log(err);
