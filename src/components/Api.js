@@ -25,7 +25,7 @@ export default class Api {
       .then(res => this._сheckResponseData(res))
   }
 
-  editProfile(name, about) { //modifyProfile
+  editProfile(name, about) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'PATCH',
       headers: this._headers,
@@ -57,7 +57,7 @@ export default class Api {
       .then(res => this._сheckResponseData(res));
   }
 
-  showLikesCard(cardId, method) { //toggleLike
+  showLikesCard(cardId, method) {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: method,
       headers: this._headers,

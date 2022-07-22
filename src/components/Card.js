@@ -75,7 +75,6 @@ export default class Card {
     if (!(this._userId === this._ownerId)) {
       this._elementTrash.classList.add(this._elementTrashDisabled);
     }
-
     return this._elementCard;
   }
 

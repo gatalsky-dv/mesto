@@ -170,15 +170,11 @@ avatarEditButton.addEventListener('click', () => {
   popupUpdateAvatar.open();
 });
 
-// const displayPage = () => {
-  Promise.all([ api.getUserInfo(), api.getInitialCards() ])
-    .then(([{ name, about, avatar, _id }, data]) => {
-      userInfo.setUserInfo({ name, about, avatar, _id });
-      cardsContainer.renderItems(data, _id);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-// }
-
-// displayPage();
+Promise.all([ api.getUserInfo(), api.getInitialCards() ])
+  .then(([{ name, about, avatar, _id }, data]) => {
+    userInfo.setUserInfo({ name, about, avatar, _id });
+    cardsContainer.renderItems(data, _id);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
