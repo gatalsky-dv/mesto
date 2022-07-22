@@ -58,7 +58,7 @@
 @import url(../blocks/popup/__container/_confirmation/popup__container_confirmation.css);
 @import url(../blocks/popup/__button/_confirmation/popup__button_confirmation.css);
 @import url(../blocks/popup/__title/_confirmation/popup__title_confirmation.css);
-@import url(../blocks/profile/__avatar/_image/profile__avatar_image.css);
+@import url(../blocks/profile/__image/profile__image.css);
 @import url(../blocks/element/__counter/element__counter.css);
 @import url(../blocks/element/__trash/_disabled/element__trash_disabled.css);
 @import url(../blocks/element/__likes/element__likes.css);

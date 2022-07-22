@@ -141,7 +141,7 @@ popupWithConfirmation.setEventListeners();
 const popupUpdateAvatar = new PopupWithForm('.popup_avatar', handleSubmitUpdateAvatarForm);
 popupUpdateAvatar.setEventListeners();
 
-const userInfo = new UserInfo('.profile__name', '.profile__description', '.profile__avatar_image');
+const userInfo = new UserInfo('.profile__name', '.profile__description', '.profile__image');
 
 const cardsContainer = new Section({
   renderer: (item, userId) => {
